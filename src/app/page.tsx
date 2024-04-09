@@ -9,7 +9,14 @@ export default function Home(): React.JSX.Element {
   return (
     <HomeWrap>
       <div className="main">
-        <div className="title">
+        <div className="text-wrapper">
+          <div className="sub_title1">자소서의 모든 것</div>
+          <div className="sub_title2">
+            <span className="highlight">짹짹</span>으로 스마트하게
+          </div>
+          <button className="button">홈페이지 바로가기</button>
+        </div>
+        <div className="main_image">
           <Image
             src={Images.intro_1}
             alt={"인트로1"}
@@ -17,7 +24,6 @@ export default function Home(): React.JSX.Element {
             height={0}
             sizes="100vw"
           />
-          <div className="sub_title">백신아, 곰아워!</div>
         </div>
       </div>
     </HomeWrap>
