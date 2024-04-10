@@ -8,6 +8,18 @@ import { Colors, Icons, Images } from "../styles";
 export default function Home(): React.JSX.Element {
   return (
     <HomeWrap>
+      <div className="header">
+        <div className="logo">
+          <Image
+            src={Images.header_logo}
+            alt={"헤더로고"}
+            width={200}
+            height={0}
+            sizes="100vw"
+          />
+        </div>
+        <div className="login_button">로그인</div>
+      </div>
       <div className="main">
         <div className="text-wrapper">
           <div className="sub_title1">자소서의 모든 것</div>
@@ -25,6 +37,15 @@ export default function Home(): React.JSX.Element {
             sizes="100vw"
           />
         </div>
+      </div>
+      <div className="arrow_ico">
+        <Image
+          src={Images.arrow_logo}
+          alt={"화살표"}
+          width={0}
+          height={0}
+          sizes="100vw"
+        />
       </div>
     </HomeWrap>
   );
