@@ -8,7 +8,7 @@ interface HeaderProps {
 }
 
 export const Header = ({ children }: HeaderProps) => (
-  <div>
+  <>
     <Head>
       <Logo>
         <Image
@@ -22,5 +22,5 @@ export const Header = ({ children }: HeaderProps) => (
       <Login_Button>로그인</Login_Button>
     </Head>
     {children}
-  </div>
+  </>
 );

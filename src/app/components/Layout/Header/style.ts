@@ -3,18 +3,21 @@ import styled from "@emotion/styled";
 
 export const Head = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin-top: 1%;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
 `;
 
 export const Logo = styled.div`
   width: fit-content;
-  margin-left: 11%;
+  margin-left: 9%;
+  margin-top: 1%;
 `;
 
 export const Login_Button = styled.div`
   ${fontGenerator("18px", "600", "20px")};
-  margin-top: 0.2%;
-  margin-right: 11%;
+  margin-right: 9%;
 `;

@@ -3,15 +3,15 @@ import styled from "@emotion/styled";
 
 export const Main = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  padding-top: 3%;
+  margin-top: 10%;
 `;
 
 export const Text_Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 9%;
+  padding-bottom: 10%;
 `;
 
 export const Sub_Title1 = styled.div`
@@ -26,23 +26,23 @@ export const Sub_Title2 = styled.div`
   width: fit-content;
 `;
 
-export const Button = styled.button`
-  width: 55%;
-  height: 2.2rem;
-  margin-top: 20%;
-  margin-left: 20%;
-  background-color: ${Colors.Main};
-  color: ${Colors.White};
-  border-radius: 0.3rem;
-  border: 0px;
-  ${fontGenerator("15px", "600", "10px")};
+export const Small_Text_Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 10%;
+`;
+
+export const Small_Title1 = styled.div`
+  ${fontGenerator("25px", "500", "30px")};
+  color: ${Colors.Black};
+  width: fit-content;
 `;
 
 export const Main_Image = styled.div`
   justify-content: flex-end;
   height: auto;
   padding-top: 12%;
-  margin-right: 9%;
 `;
 
 export const Arrow_Ico = styled.div`
@@ -50,5 +50,4 @@ export const Arrow_Ico = styled.div`
   justify-content: center;
   align-items: center;
   height: auto;
-  margin-top: 3.5%;
 `;
