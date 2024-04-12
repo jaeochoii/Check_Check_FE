@@ -8,7 +8,7 @@
 |BE|FE|AOS|
 
 ## 준비중입니다...
-## 🍀 Check Check Commit Convention
+## 🌈 Check Check Commit Convention
 - ✨ Feat: A new feature or enhancement
 - 🐛 Fix: A bug fix
 - 📝 Docs: Documentation changes
