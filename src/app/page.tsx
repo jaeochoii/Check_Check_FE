@@ -7,9 +7,9 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Mousewheel, Pagination, Autoplay } from "swiper/modules";
 import SwiperCore from "swiper";
 import { Header } from "./components/Layout/Header";
-import { PageFirst } from "./components/home/PageFirst";
-import { PageSecond } from "./components/home/PageSecond";
-import { PageThree } from "./components/home/PageThree";
+import { PageFirst } from "./components/Home/PageFirst";
+import { PageSecond } from "./components/Home/PageSecond";
+import { PageThree } from "./components/Home/PageThree";
 
 const StyledSwiper = styled(Swiper)`
   width: 100%;
@@ -22,7 +22,7 @@ export default function Home(): React.JSX.Element {
   return (
     <Header>
       <StyledSwiper
-        speed={1000}
+        speed={800}
         className="mySwiper"
         direction={"vertical"}
         spaceBetween={30}
@@ -32,7 +32,7 @@ export default function Home(): React.JSX.Element {
           clickable: true,
           el: ".swiper-pagination", // 페이지 표시기
         }}
-        autoplay={{ delay: 4000 }}
+        autoplay={{ delay: 3500 }}
         effect="fade"
         modules={[Mousewheel, Pagination]}
         onSlideChange={(swiper: any) => console.log(swiper)}

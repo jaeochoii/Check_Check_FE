@@ -1,5 +1,6 @@
 import { Colors, fontGenerator } from "@/styles";
 import styled from "@emotion/styled";
+import { keyframes } from "@emotion/css";
 
 export const Main = styled.div`
   display: flex;
@@ -34,7 +35,7 @@ export const Small_Text_Wrapper = styled.div`
 `;
 
 export const Small_Title1 = styled.div`
-  ${fontGenerator("25px", "500", "30px")};
+  ${fontGenerator("25px", "600", "30px")};
   color: ${Colors.Black};
   width: fit-content;
 `;
@@ -43,11 +44,4 @@ export const Main_Image = styled.div`
   justify-content: flex-end;
   height: auto;
   padding-top: 12%;
-`;
-
-export const Arrow_Ico = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: auto;
 `;

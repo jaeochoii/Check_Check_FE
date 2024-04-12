@@ -22,7 +22,7 @@ export const Colors = {
   SecondaryLight: "#90C9F61A",
   Error: "#DA1E28",
   ErrorLight: "#FF57611A",
-  Kakao: "#F1DA2A",
+  Kakao: "#FEE500",
   KakaoDark: "#ceba24",
   Secondary02: "#F2B81E",
   Yellow: "#FFBB05",

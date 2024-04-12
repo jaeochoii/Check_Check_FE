@@ -9,7 +9,6 @@ import {
   Small_Text_Wrapper,
   Small_Title1,
   Main_Image,
-  Arrow_Ico,
 } from "./style";
 
 const spanStyle: React.CSSProperties = {
@@ -43,14 +42,5 @@ export const PageThree = () => (
         />
       </Main_Image>
     </Main>
-    <Arrow_Ico>
-      <Image
-        src={Images.arrow_logo}
-        alt={"화살표"}
-        width={0}
-        height={0}
-        sizes="100vw"
-      />
-    </Arrow_Ico>
   </>
 );
