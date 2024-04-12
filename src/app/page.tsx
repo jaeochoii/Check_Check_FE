@@ -4,7 +4,8 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import { HomeWrap } from "./style";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Mousewheel, Pagination } from "swiper/modules";
+import { Mousewheel, Pagination, Autoplay } from "swiper/modules";
+import SwiperCore from "swiper";
 import { Header } from "./components/Layout/Header";
 import { PageFirst } from "./components/home/PageFirst";
 import { PageSecond } from "./components/home/PageSecond";
@@ -17,9 +18,11 @@ const StyledSwiper = styled(Swiper)`
 const StyledSwiperSlide = styled(SwiperSlide)``;
 
 export default function Home(): React.JSX.Element {
+  SwiperCore.use([Autoplay]);
   return (
     <Header>
       <StyledSwiper
+        speed={1000}
         className="mySwiper"
         direction={"vertical"}
         spaceBetween={30}
@@ -27,7 +30,10 @@ export default function Home(): React.JSX.Element {
         mousewheel={true}
         pagination={{
           clickable: true,
+          el: ".swiper-pagination", // 페이지 표시기
         }}
+        autoplay={{ delay: 4000 }}
+        effect="fade"
         modules={[Mousewheel, Pagination]}
         onSlideChange={(swiper: any) => console.log(swiper)}
         onSwiper={(swiper: any) => swiper.mousewheel.enable()}
