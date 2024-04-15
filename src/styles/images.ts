@@ -6,6 +6,7 @@ import intro_1 from "../../public/image/img-intro-1.svg";
 import intro_2 from "../../public/image/img-intro-2.svg";
 import intro_3 from "../../public/image/img-intro-3.svg";
 import login from "../../public/image/img-login.svg";
+import error_404 from "../../public/image/img-404.svg";
 
 // made icons
 import header_logo from "../../public/ico/ico-logo.svg";
@@ -18,6 +19,7 @@ export const Images: ImagesType = {
   intro_2: intro_2,
   intro_3: intro_3,
   login: login,
+  error_404: error_404,
 
   header_logo: header_logo,
   arrow_logo: arrow_logo,
