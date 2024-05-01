@@ -1,13 +1,17 @@
 "use client";
 
 import * as React from "react";
-import { Header } from "../components/Layout/Header";
-import { Main } from "../components/Main/index";
+import { MainLay } from "./style";
+import { LeftBarPage } from "../components/Main/LeftBar";
+import { RightBarPage } from "../components/Main/RightBar";
+import { ContentsPage } from "../components/Main/Contents";
 
 export default function MainPage(): React.JSX.Element {
   return (
-    <Header>
-      <Main />
-    </Header>
+    <MainLay>
+      <LeftBarPage />
+      <ContentsPage />
+      <RightBarPage />
+    </MainLay>
   );
 }
