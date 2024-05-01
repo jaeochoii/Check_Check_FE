@@ -87,6 +87,7 @@ export const MemoText = styled.div`
 export const DeleteIco = styled.div`
   width: 24px;
   height: 24px;
+  cursor: pointer;
 `;
 
 export const MemoTable = styled.div`
@@ -109,6 +110,7 @@ export const CheckBox = styled.div`
   height: 18px;
   border-radius: 2px;
   border: 2px solid var(--Neutral-90, #c4c4c4);
+  cursor: pointer;
 `;
 
 export const InputMemo = styled.input`

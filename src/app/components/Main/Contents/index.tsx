@@ -45,10 +45,10 @@ export const ContentsPage = () => {
           <CompanyName>삼성전자</CompanyName>
         </Company>
         <Questions>
-          삼성전자를 지원한 이유와 입사 후 회사에서 이루고 싶은 꿈을 기술하시오.
+          삼성전자에 지원한 동기와 입사 이후 꿈꾸는 것은 무엇인가요?
         </Questions>
         <Divider />
-        <InputAnswer></InputAnswer>
+        <InputAnswer placeholder="내용은 이곳에 작성해주세요."></InputAnswer>
         <CountWords>691 / 700</CountWords>
       </Contents>
     </>
