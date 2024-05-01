@@ -2,12 +2,12 @@
 
 import * as React from "react";
 import { Header } from "../components/Layout/Header";
-import { Error } from "../components/Error";
+import { Main } from "../components/Main/index";
 
-export default function ErrorPage(): React.JSX.Element {
+export default function MainPage(): React.JSX.Element {
   return (
     <Header>
-      <Error />
+      <Main />
     </Header>
   );
 }

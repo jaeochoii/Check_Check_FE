@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { Images } from "../../../../styles";
 import {
@@ -24,7 +25,9 @@ export const PageFirst = () => (
           <span style={spanStyle}>짹짹</span>
           으로 스마트하게
         </Sub_Title2>
-        <Button>홈페이지 바로가기</Button>
+        <Button>
+          <Link href={"./main"}>홈페이지 바로가기</Link>
+        </Button>
       </Text_Wrapper>
       <Main_Image>
         <Image
