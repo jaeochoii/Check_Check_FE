@@ -90,45 +90,6 @@ export const DeleteIco = styled.div`
   cursor: pointer;
 `;
 
-export const MemoTable = styled.div`
-  display: flex;
-  padding: 8px;
-  align-items: center;
-  gap: 12px;
-  align-self: stretch;
-
-  border-radius: 8px;
-  background: var(--Common-100, #fff);
-
-  /* Shadow/Normal */
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.12),
-    0px 0px 1px 0px rgba(0, 0, 0, 0.08), 0px 0px 1px 0px rgba(0, 0, 0, 0.08);
-`;
-
-export const CheckBox = styled.div`
-  width: 18px;
-  height: 18px;
-  border-radius: 2px;
-  border: 2px solid var(--Neutral-90, #c4c4c4);
-  cursor: pointer;
-`;
-
-export const InputMemo = styled.input`
-  flex: 1 0 0;
-  color: var(--Common-0, var(--Common-0, #000));
-  text-align: center;
-  font-feature-settings: "ss10" on;
-
-  border: none;
-  outline: none;
-
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%;
-  letter-spacing: 0.091px;
-`;
-
 export const AddMemo = styled.button`
   display: flex;
   padding: 8px;

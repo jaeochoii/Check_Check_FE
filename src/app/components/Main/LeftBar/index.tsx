@@ -74,7 +74,7 @@ export const LeftBarPage = () => {
           <CompanyList>
             <CompanyHeader>
               <CompanyName>삼성전자</CompanyName>
-              <CheckBox></CheckBox>
+              <CheckBox type="checkbox"></CheckBox>
             </CompanyHeader>
             <QuestionList>
               <QuestionEach>

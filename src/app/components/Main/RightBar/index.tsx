@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useState } from "react";
+import { MemoLayout } from "../../Layout/Memo";
 import {
   Hint,
   HintContents,
@@ -8,9 +10,6 @@ import {
   MemoTitle,
   MemoText,
   DeleteIco,
-  MemoTable,
-  CheckBox,
-  InputMemo,
   AddMemo,
   PlusIco,
   CheckWordsBtn,
@@ -19,7 +18,16 @@ import {
   SaveText,
 } from "./style";
 
-export const RightBarPage = () => {
+export const RightBarPage: React.FC = () => {
+  const [components, setComponents] = useState<JSX.Element[]>([]);
+
+  const addComponents = () => {
+    setComponents((prevComponents) => [
+      ...prevComponents,
+      <MemoLayout key={Date.now()} />,
+    ]);
+  };
+
   return (
     <>
       <RightBar>
@@ -60,11 +68,9 @@ export const RightBarPage = () => {
               </svg>
             </DeleteIco>
           </MemoTitle>
-          <MemoTable>
-            <CheckBox />
-            <InputMemo />
-          </MemoTable>
-          <AddMemo>
+
+          {components.map((component) => component)}
+          <AddMemo onClick={addComponents}>
             <PlusIco>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
