@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, ChangeEvent } from "react";
 import {
   Contents,
   Company,
@@ -10,7 +11,13 @@ import {
   CompanyName,
 } from "./style";
 
-export const ContentsPage = () => {
+export const ContentsPage: React.FC = () => {
+  const [text, setText] = useState<string>("");
+
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setText(event.target.value);
+  };
+
   return (
     <>
       <Contents>
@@ -48,8 +55,13 @@ export const ContentsPage = () => {
           삼성전자에 지원한 동기와 입사 이후 꿈꾸는 것은 무엇인가요?
         </Questions>
         <Divider />
-        <InputAnswer placeholder="내용은 이곳에 작성해주세요."></InputAnswer>
-        <CountWords>691 / 700</CountWords>
+        <InputAnswer
+          placeholder="내용은 이곳에 작성해주세요."
+          onChange={handleChange}
+        ></InputAnswer>
+        <CountWords>
+          <span className="currentWords">{text.length}</span> / 700
+        </CountWords>
       </Contents>
     </>
   );

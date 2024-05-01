@@ -27,6 +27,7 @@ export const ProfileImg = styled.img`
   height: 84px;
   border-radius: 10000px;
   border: 1px solid var(--Line-Normal-Alternative, rgba(112, 115, 124, 0.08));
+  background-color: #c4c4c4;
 `;
 
 export const ProfileTextWrapper = styled.div`
@@ -279,7 +280,6 @@ export const DeleteBtn = styled.button`
   border: 1px solid var(--Light-Blue-30, #006796);
   background: var(--Common-100, #fff);
   cursor: pointer;
-  margin-bottom: 10%;
 `;
 
 export const Text = styled.div`

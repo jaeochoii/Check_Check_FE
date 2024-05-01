@@ -89,7 +89,7 @@ export const InputAnswer = styled.textarea`
 
 export const CountWords = styled.div`
   align-self: stretch;
-  color: var(--Additional-40, var(--Green-40, #009632));
+  color: var(--Neutral-80, var(--Neutral-80, #b0b0b0));
   text-align: right;
   font-feature-settings: "ss10" on;
 
@@ -98,4 +98,8 @@ export const CountWords = styled.div`
   font-weight: 600;
   line-height: 127.3%;
   letter-spacing: 0.342px;
+
+  .currentWords {
+    color: var(--Additional-40, var(--Green-40, #009632));
+  }
 `;
