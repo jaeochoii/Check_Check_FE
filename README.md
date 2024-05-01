@@ -5,7 +5,7 @@
 |:---:|:---:|:---:|
 |[송현성](https://github.com/thdgustjd1)|[최재오](https://github.com/jaeochoii)|[양원철](https://github.com/Woncheol-AOS)|
 |컴퓨터공학과 4|컴퓨터공학과 4|컴퓨터공학과 4|
-|BE|FE|AOS|
+|BE|FE|Design & DB|
 
 ## 🫠 준비중입니다...
 
