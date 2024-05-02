@@ -1,4 +1,3 @@
-import { Colors, fontGenerator } from "@/styles";
 import styled from "@emotion/styled";
 
 export const LeftBar = styled.div`
@@ -20,14 +19,6 @@ export const Profile = styled.div`
   align-items: center;
   gap: 8px;
   align-self: stretch;
-`;
-
-export const ProfileImg = styled.img`
-  width: 84px;
-  height: 84px;
-  border-radius: 10000px;
-  border: 1px solid var(--Line-Normal-Alternative, rgba(112, 115, 124, 0.08));
-  background-color: #c4c4c4;
 `;
 
 export const ProfileTextWrapper = styled.div`

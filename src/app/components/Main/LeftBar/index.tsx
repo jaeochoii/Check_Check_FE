@@ -1,4 +1,5 @@
 import * as React from "react";
+import { SetProfile } from "@/app/utils/Profile";
 import {
   CheckBox,
   CompanyHeader,
@@ -8,7 +9,6 @@ import {
   LogOutText,
   Ico,
   Profile,
-  ProfileImg,
   ProfileLogoutWrapper,
   ProfileText,
   ProfileTextWrapper,
@@ -33,7 +33,7 @@ export const LeftBarPage = () => {
     <>
       <LeftBar>
         <Profile>
-          <ProfileImg />
+          <SetProfile />
           <ProfileTextWrapper>
             <ProfileText>
               안녕하세요, <span className="highlight">김인하</span>님
