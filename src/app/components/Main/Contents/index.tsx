@@ -56,6 +56,7 @@ export const ContentsPage: React.FC = () => {
         </Questions>
         <Divider />
         <InputAnswer
+          spellCheck="false"
           placeholder="내용은 이곳에 작성해주세요."
           onChange={handleChange}
         ></InputAnswer>
