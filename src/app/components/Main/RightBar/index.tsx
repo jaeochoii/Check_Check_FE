@@ -19,13 +19,25 @@ import {
 } from "./style";
 
 export const RightBarPage: React.FC = () => {
-  const [components, setComponents] = useState<JSX.Element[]>([]);
+  const [memos, setMemos] = useState<{ key: number; isChecked: boolean }[]>([]);
 
-  const addComponents = () => {
-    setComponents((prevComponents) => [
-      ...prevComponents,
-      <MemoLayout key={Date.now()} />,
-    ]);
+  const handleAddMemo = () => {
+    setMemos([...memos, { key: memos.length, isChecked: false }]);
+  };
+
+  const handleDeleteMemo = () => {
+    const updatedMemos = memos.filter((memo) => !memo.isChecked);
+    setMemos(updatedMemos);
+  };
+
+  const handleCheckboxChange = (key: number, isChecked: boolean) => {
+    const updatedMemos = memos.map((memo) => {
+      if (memo.key === key) {
+        return { ...memo, isChecked };
+      }
+      return memo;
+    });
+    setMemos(updatedMemos);
   };
 
   return (
@@ -41,7 +53,7 @@ export const RightBarPage: React.FC = () => {
         <Memo>
           <MemoTitle>
             <MemoText>메모</MemoText>
-            <DeleteIco>
+            <DeleteIco onClick={handleDeleteMemo}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -68,9 +80,16 @@ export const RightBarPage: React.FC = () => {
               </svg>
             </DeleteIco>
           </MemoTitle>
-
-          {components.map((component) => component)}
-          <AddMemo onClick={addComponents}>
+          {memos.map((memo) => (
+            <MemoLayout
+              key={memo.key}
+              onDelete={() => handleDeleteMemo()}
+              onCheckboxChange={(isChecked) =>
+                handleCheckboxChange(memo.key, isChecked)
+              }
+            />
+          ))}
+          <AddMemo onClick={handleAddMemo}>
             <PlusIco>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
