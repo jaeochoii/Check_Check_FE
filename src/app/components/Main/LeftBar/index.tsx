@@ -43,7 +43,7 @@ export const LeftBarPage = () => {
       ...questions,
       {
         index: newIndex,
-        text: `질문 ${newIndex}`,
+        text: `질문`,
       },
     ]);
   };
@@ -53,7 +53,6 @@ export const LeftBarPage = () => {
       const updatedQuestions = prevQuestions
         .filter((q) => q.index !== index)
         .map((q, idx) => {
-          // 삭제된 질문 이후의 질문들의 인덱스를 1씩 감소시킴
           if (q.index > index) {
             return { ...q, index: idx + 1 };
           }
