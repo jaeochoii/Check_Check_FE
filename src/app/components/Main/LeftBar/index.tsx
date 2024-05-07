@@ -27,6 +27,13 @@ import {
   QuestionIndexText,
   QuestionList,
   QuestionText,
+  ProfileLayout,
+  GuideTextWrapper,
+  GuideText,
+  LogInBtn,
+  LogInText,
+  SignUpBtn,
+  SignUpText,
 } from "./style";
 
 interface Question {
@@ -65,7 +72,19 @@ export const LeftBarPage = () => {
   return (
     <>
       <LeftBar>
-        <Profile>
+        <ProfileLayout>
+          <GuideTextWrapper>
+            <GuideText>로그인 후 자기소개서 저장 기능을 누려보세요!</GuideText>
+          </GuideTextWrapper>
+          <LogInBtn>
+            <LogInText>로그인</LogInText>
+          </LogInBtn>
+          <SignUpBtn>
+            <SignUpText>회원가입</SignUpText>
+          </SignUpBtn>
+        </ProfileLayout>
+        {/** 
+         *         <Profile>
           <SetProfile />
           <ProfileTextWrapper>
             <ProfileText>
@@ -102,6 +121,8 @@ export const LeftBarPage = () => {
             </ProfileLogoutWrapper>
           </ProfileTextWrapper>
         </Profile>
+        */}
+
         <WritingListWrapper>
           <SubTitle>내 자소서</SubTitle>
           <CompanyList>

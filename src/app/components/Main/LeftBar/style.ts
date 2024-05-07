@@ -14,6 +14,73 @@ export const LeftBar = styled.div`
   background: var(--Light-Blue-99, #f7fdff);
 `;
 
+export const ProfileLayout = styled.div`
+  display: flex;
+  height: 100px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+`;
+
+export const GuideTextWrapper = styled.div`
+  align-self: stretch;
+`;
+
+export const GuideText = styled.div`
+  color: var(--Common-0, var(--Common-0, #000));
+  text-align: center;
+  font-feature-settings: "ss10" on;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 142.9%;
+  letter-spacing: 0.203px;
+`;
+
+export const LogInBtn = styled.div`
+  display: flex;
+  width: 312px;
+  flex: 1 0 0;
+  height: 42px;
+  flex-direction: column;
+  justify-content: center;
+  background-image: linear-gradient(93deg, #a1e1ff 27.84%, #acfcc7 103.81%);
+  border: 1px solid var(--Violet-70, #9e86fc);
+  border-radius: 8px;
+  cursor: pointer;
+`;
+
+export const LogInText = styled.div`
+  color: var(--Primary-30, var(--Light-Blue-30, #006796));
+  text-align: center;
+  font-feature-settings: "ss10" on;
+
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  letter-spacing: -0.24px;
+`;
+
+export const SignUpBtn = styled.div`
+  align-self: stretch;
+`;
+
+export const SignUpText = styled.div`
+  color: var(--Neutral-50, var(--Neutral-50, #737373));
+  text-align: center;
+  font-feature-settings: "ss10" on;
+
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 146.7%;
+  letter-spacing: 0.144px;
+`;
+
 export const Profile = styled.div`
   display: flex;
   align-items: center;
