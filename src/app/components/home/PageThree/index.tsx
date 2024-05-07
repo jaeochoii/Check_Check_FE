@@ -11,8 +11,11 @@ import {
   Main_Image,
 } from "./style";
 
+const root = document.documentElement;
+const lightBlue50 = root.style.getPropertyValue("--Light-Blue-50");
+
 const spanStyle: React.CSSProperties = {
-  color: "#3D8DCC",
+  color: lightBlue50 || "#00aeff",
 };
 
 export const PageThree = () => (
@@ -22,7 +25,7 @@ export const PageThree = () => (
         <Sub_Title1>AI 분석을 기반으로</Sub_Title1>
         <Sub_Title1>여러분의 자소서를</Sub_Title1>
         <Sub_Title2>
-          <span style={spanStyle}>Check</span>
+          <span style={spanStyle}>CHECK</span>
           해줄 거예요
         </Sub_Title2>
         <Small_Text_Wrapper>

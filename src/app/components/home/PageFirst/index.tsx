@@ -12,8 +12,11 @@ import {
   Arrow_Ico,
 } from "./style";
 
+const root = document.documentElement;
+const lightBlue50 = root.style.getPropertyValue("--Light-Blue-50");
+
 const spanStyle: React.CSSProperties = {
-  color: "#3D8DCC",
+  color: lightBlue50 || "#00aeff",
 };
 
 export const PageFirst = () => (

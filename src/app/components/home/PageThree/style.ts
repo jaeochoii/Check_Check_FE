@@ -6,7 +6,7 @@ export const Main = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 10%;
+  margin-top: 13%;
 `;
 
 export const Text_Wrapper = styled.div`
@@ -19,6 +19,7 @@ export const Sub_Title1 = styled.div`
   ${fontGenerator("50px", "800", "70px")};
   color: ${Colors.Black};
   width: fit-content;
+  margin-bottom: 2%;
 `;
 
 export const Sub_Title2 = styled.div`
@@ -31,13 +32,14 @@ export const Small_Text_Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin-top: 10%;
+  margin-top: 15%;
 `;
 
 export const Small_Title1 = styled.div`
-  ${fontGenerator("25px", "600", "30px")};
+  ${fontGenerator("25px", "700", "30px")};
   color: ${Colors.Black};
   width: fit-content;
+  margin-bottom: 2%;
 `;
 
 export const Main_Image = styled.div`

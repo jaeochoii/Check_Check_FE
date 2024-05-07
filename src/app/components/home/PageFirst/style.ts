@@ -19,6 +19,7 @@ export const Sub_Title1 = styled.div`
   ${fontGenerator("50px", "800", "70px")};
   color: ${Colors.Black};
   width: fit-content;
+  margin-bottom: 2%;
 `;
 
 export const Sub_Title2 = styled.div`
@@ -28,15 +29,15 @@ export const Sub_Title2 = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 55%;
-  height: 2.2rem;
+  width: 280px;
+  height: 47px;
   margin-top: 20%;
   margin-left: 20%;
-  background-color: ${Colors.Main};
   color: ${Colors.White};
-  border-radius: 0.3rem;
+  border-radius: 10px;
+  background: var(--Light-Blue-50, #00aeff);
   border: 0px;
-  ${fontGenerator("15px", "600", "10px")};
+  ${fontGenerator("20px", "700", "10px")};
 `;
 
 export const Main_Image = styled.div`
