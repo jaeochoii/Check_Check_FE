@@ -321,7 +321,7 @@ export const AddText = styled.div`
   font-size: 13px;
   font-style: normal;
   font-weight: 600;
-  line-height: 138.5%; /* 18.005px */
+  line-height: 138.5%;
   letter-spacing: 0.252px;
   padding-top: 1%;
 `;
@@ -334,7 +334,7 @@ export const Text = styled.div`
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
-  line-height: 140%; /* 28px */
+  line-height: 140%;
   letter-spacing: -0.24px;
 `;
 
@@ -359,7 +359,7 @@ export const ProtectListText = styled.div`
   font-size: 13px;
   font-style: normal;
   font-weight: 600;
-  line-height: 138.5%; /* 18.005px */
+  line-height: 138.5%;
   letter-spacing: 0.252px;
 
   cursor: pointer;
