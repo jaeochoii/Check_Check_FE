@@ -2,7 +2,6 @@ import * as React from "react";
 import { useState } from "react";
 import { SetProfile } from "@/app/utils/Profile";
 import {
-  CheckBox,
   CompanyHeader,
   CompanyList,
   CompanyName,
@@ -33,6 +32,8 @@ import {
   MyReportHeader,
   AddCompany,
   AddCompanyText,
+  CheckMyReport,
+  Text,
 } from "./style";
 
 interface Question {
@@ -42,6 +43,11 @@ interface Question {
 
 export const LeftBarPage = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleDeleteButtonClick = () => {
+    setIsVisible(false);
+  };
 
   const handleAddQuestion = () => {
     const newIndex = questions.length + 1;
@@ -71,7 +77,8 @@ export const LeftBarPage = () => {
   return (
     <>
       <LeftBar>
-        <ProfileLayout>
+        {/**
+         *         <ProfileLayout>
           <GuideTextWrapper>
             <GuideText>로그인 후 자기소개서 저장 기능을 누려보세요!</GuideText>
           </GuideTextWrapper>
@@ -82,8 +89,8 @@ export const LeftBarPage = () => {
             <SignUpText>회원가입</SignUpText>
           </SignUpBtn>
         </ProfileLayout>
-        {/** 
-         *         <Profile>
+         */}
+        <Profile>
           <SetProfile />
           <ProfileTextWrapper>
             <ProfileText>
@@ -120,7 +127,6 @@ export const LeftBarPage = () => {
             </ProfileLogoutWrapper>
           </ProfileTextWrapper>
         </Profile>
-        */}
 
         <WritingListWrapper>
           <MyReportHeader>
@@ -153,77 +159,133 @@ export const LeftBarPage = () => {
               <AddCompanyText>회사 추가하기</AddCompanyText>
             </AddCompany>
           </MyReportHeader>
-          <CompanyList>
-            <CompanyHeader>
-              <CompanyName>삼성전자</CompanyName>
-              <CheckBox type="checkbox"></CheckBox>
-            </CompanyHeader>
-            <QuestionList>
-              {questions.map((question) => (
-                <QuestionEach key={question.index}>
-                  <QuestionIndex>
-                    <QuestionIndexText>{question.index}</QuestionIndexText>
-                  </QuestionIndex>
-                  <QuestionText>{question.text}</QuestionText>
-                  <Ico onClick={() => handleDeleteQuestion(question.index)}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
+          {isVisible && (
+            <CompanyList>
+              <CompanyHeader>
+                <CompanyName>삼성전자</CompanyName>
+                <Ico>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <mask
+                      id="mask0_2634_217"
+                      maskUnits="userSpaceOnUse"
+                      x="0"
+                      y="0"
                       width="24"
                       height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
                     >
-                      <mask
-                        id="mask0_2367_233"
-                        maskUnits="userSpaceOnUse"
-                        x="0"
-                        y="0"
+                      <rect width="24" height="24" fill="#D9D9D9" />
+                    </mask>
+                    <g mask="url(#mask0_2634_217)">
+                      <path
+                        d="M5 19H6.425L16.2 9.225L14.775 7.8L5 17.575V19ZM4 21C3.71667 21 3.47917 20.9042 3.2875 20.7125C3.09583 20.5208 3 20.2833 3 20V17.575C3 17.3083 3.05 17.0542 3.15 16.8125C3.25 16.5708 3.39167 16.3583 3.575 16.175L16.2 3.575C16.4 3.39167 16.6208 3.25 16.8625 3.15C17.1042 3.05 17.3583 3 17.625 3C17.8917 3 18.15 3.05 18.4 3.15C18.65 3.25 18.8667 3.4 19.05 3.6L20.425 5C20.625 5.18333 20.7708 5.4 20.8625 5.65C20.9542 5.9 21 6.15 21 6.4C21 6.66667 20.9542 6.92083 20.8625 7.1625C20.7708 7.40417 20.625 7.625 20.425 7.825L7.825 20.425C7.64167 20.6083 7.42917 20.75 7.1875 20.85C6.94583 20.95 6.69167 21 6.425 21H4ZM15.475 8.525L14.775 7.8L16.2 9.225L15.475 8.525Z"
+                        fill="#8A8A8A"
+                      />
+                    </g>
+                  </svg>
+                </Ico>
+                <Ico onClick={handleDeleteButtonClick}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <mask
+                      id="mask0_2367_233"
+                      maskUnits="userSpaceOnUse"
+                      x="0"
+                      y="0"
+                      width="24"
+                      height="24"
+                    >
+                      <rect width="24" height="24" fill="#D9D9D9" />
+                    </mask>
+                    <g mask="url(#mask0_2367_233)">
+                      <path
+                        d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM17 6H7V19H17V6ZM10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17ZM14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17Z"
+                        fill="#737373"
+                      />
+                    </g>
+                  </svg>
+                </Ico>
+              </CompanyHeader>
+              <QuestionList>
+                {questions.map((question) => (
+                  <QuestionEach key={question.index}>
+                    <QuestionIndex>
+                      <QuestionIndexText>{question.index}</QuestionIndexText>
+                    </QuestionIndex>
+                    <QuestionText>{question.text}</QuestionText>
+                    <Ico onClick={() => handleDeleteQuestion(question.index)}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
                       >
-                        <rect width="24" height="24" fill="#D9D9D9" />
-                      </mask>
-                      <g mask="url(#mask0_2367_233)">
-                        <path
-                          d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM17 6H7V19H17V6ZM10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17ZM14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17Z"
-                          fill="#737373"
-                        />
-                      </g>
-                    </svg>
-                  </Ico>
-                </QuestionEach>
-              ))}
-            </QuestionList>
-            <AddQuestion onClick={handleAddQuestion}>
-              <Ico>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="25"
-                  height="24"
-                  viewBox="0 0 25 24"
-                  fill="none"
-                >
-                  <mask
-                    id="mask0_2367_204"
-                    maskUnits="userSpaceOnUse"
-                    x="0"
-                    y="0"
+                        <mask
+                          id="mask0_2367_233"
+                          maskUnits="userSpaceOnUse"
+                          x="0"
+                          y="0"
+                          width="24"
+                          height="24"
+                        >
+                          <rect width="24" height="24" fill="#D9D9D9" />
+                        </mask>
+                        <g mask="url(#mask0_2367_233)">
+                          <path
+                            d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM17 6H7V19H17V6ZM10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17ZM14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17Z"
+                            fill="#737373"
+                          />
+                        </g>
+                      </svg>
+                    </Ico>
+                  </QuestionEach>
+                ))}
+              </QuestionList>
+              <AddQuestion onClick={handleAddQuestion}>
+                <Ico>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
                     width="25"
                     height="24"
+                    viewBox="0 0 25 24"
+                    fill="none"
                   >
-                    <rect x="0.5" width="24" height="24" fill="#D9D9D9" />
-                  </mask>
-                  <g mask="url(#mask0_2367_204)">
-                    <path
-                      d="M11.5 13H6.5C6.21667 13 5.97917 12.9042 5.7875 12.7125C5.59583 12.5208 5.5 12.2833 5.5 12C5.5 11.7167 5.59583 11.4792 5.7875 11.2875C5.97917 11.0958 6.21667 11 6.5 11H11.5V6C11.5 5.71667 11.5958 5.47917 11.7875 5.2875C11.9792 5.09583 12.2167 5 12.5 5C12.7833 5 13.0208 5.09583 13.2125 5.2875C13.4042 5.47917 13.5 5.71667 13.5 6V11H18.5C18.7833 11 19.0208 11.0958 19.2125 11.2875C19.4042 11.4792 19.5 11.7167 19.5 12C19.5 12.2833 19.4042 12.5208 19.2125 12.7125C19.0208 12.9042 18.7833 13 18.5 13H13.5V18C13.5 18.2833 13.4042 18.5208 13.2125 18.7125C13.0208 18.9042 12.7833 19 12.5 19C12.2167 19 11.9792 18.9042 11.7875 18.7125C11.5958 18.5208 11.5 18.2833 11.5 18V13Z"
-                      fill="#1C1B1F"
-                    />
-                  </g>
-                </svg>
-              </Ico>
-              <AddText>질문 추가하기</AddText>
-            </AddQuestion>
-          </CompanyList>
+                    <mask
+                      id="mask0_2367_204"
+                      maskUnits="userSpaceOnUse"
+                      x="0"
+                      y="0"
+                      width="25"
+                      height="24"
+                    >
+                      <rect x="0.5" width="24" height="24" fill="#D9D9D9" />
+                    </mask>
+                    <g mask="url(#mask0_2367_204)">
+                      <path
+                        d="M11.5 13H6.5C6.21667 13 5.97917 12.9042 5.7875 12.7125C5.59583 12.5208 5.5 12.2833 5.5 12C5.5 11.7167 5.59583 11.4792 5.7875 11.2875C5.97917 11.0958 6.21667 11 6.5 11H11.5V6C11.5 5.71667 11.5958 5.47917 11.7875 5.2875C11.9792 5.09583 12.2167 5 12.5 5C12.7833 5 13.0208 5.09583 13.2125 5.2875C13.4042 5.47917 13.5 5.71667 13.5 6V11H18.5C18.7833 11 19.0208 11.0958 19.2125 11.2875C19.4042 11.4792 19.5 11.7167 19.5 12C19.5 12.2833 19.4042 12.5208 19.2125 12.7125C19.0208 12.9042 18.7833 13 18.5 13H13.5V18C13.5 18.2833 13.4042 18.5208 13.2125 18.7125C13.0208 18.9042 12.7833 19 12.5 19C12.2167 19 11.9792 18.9042 11.7875 18.7125C11.5958 18.5208 11.5 18.2833 11.5 18V13Z"
+                        fill="#1C1B1F"
+                      />
+                    </g>
+                  </svg>
+                </Ico>
+                <AddText>질문 추가하기</AddText>
+              </AddQuestion>
+              <CheckMyReport>
+                <Text>첨삭</Text>
+              </CheckMyReport>
+            </CompanyList>
+          )}
         </WritingListWrapper>
         <ProtectListText>개인정보처리방침</ProtectListText>
       </LeftBar>
