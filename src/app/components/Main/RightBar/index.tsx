@@ -122,7 +122,7 @@ export const RightBarPage: React.FC = () => {
           <CheckWordsText>맞춤법 검사</CheckWordsText>
         </CheckWordsBtn>
         <SaveBtn>
-          <SaveText>저장</SaveText>
+          <SaveText>자기소개서 저장</SaveText>
         </SaveBtn>
       </RightBar>
     </>

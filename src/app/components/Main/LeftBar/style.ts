@@ -93,7 +93,7 @@ export const ProfileTextWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 8px;
+  gap: 4px;
   flex: 1 0 0;
 `;
 
@@ -111,6 +111,14 @@ export const ProfileText = styled.div`
   .highlight {
     color: var(--Primary-40, #008dcf);
   }
+`;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
 `;
 
 export const ProfileLogoutWrapper = styled.div`
@@ -142,7 +150,7 @@ export const WritingListWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 36px;
   flex: 1 0 0;
   align-self: stretch;
   opacity: 0.9;
@@ -152,8 +160,8 @@ export const MyReportHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
   align-self: stretch;
+  margin-top: 36px;
 `;
 
 export const SubTitle = styled.div`
@@ -338,9 +346,10 @@ export const CheckMyReport = styled.div`
   justify-content: center;
   flex-shrink: 0;
   background-image: linear-gradient(96deg, #a1e1ff 35.44%, #acfcc7 66.68%);
-  stroke-width: 1px;
-  stroke: #a1e1ff;
+  border: 1px solid;
+  border-image: linear-gradient(96deg, #a1e1ff 100%, #9e86fc 100%);
   border-radius: 16px;
+  cursor: pointer;
 `;
 
 export const ProtectListText = styled.div`
