@@ -17,10 +17,6 @@ import {
   WritingListWrapper,
   AddQuestion,
   AddText,
-  AddCompany,
-  CheckReportBtn,
-  DeleteBtn,
-  Text,
   ProtectListText,
   QuestionEach,
   QuestionIndex,
@@ -34,6 +30,9 @@ import {
   LogInText,
   SignUpBtn,
   SignUpText,
+  MyReportHeader,
+  AddCompany,
+  AddCompanyText,
 } from "./style";
 
 interface Question {
@@ -124,7 +123,36 @@ export const LeftBarPage = () => {
         */}
 
         <WritingListWrapper>
-          <SubTitle>내 자소서</SubTitle>
+          <MyReportHeader>
+            <SubTitle>내 자소서</SubTitle>
+            <AddCompany>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <mask
+                  id="mask0_2634_311"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="16"
+                  height="16"
+                >
+                  <rect width="16" height="16" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_2634_311)">
+                  <path
+                    d="M7.33331 8.66668H3.99998C3.81109 8.66668 3.65276 8.60279 3.52498 8.47501C3.3972 8.34723 3.33331 8.1889 3.33331 8.00001C3.33331 7.81112 3.3972 7.65279 3.52498 7.52501C3.65276 7.39723 3.81109 7.33334 3.99998 7.33334H7.33331V4.00001C7.33331 3.81112 7.3972 3.65279 7.52498 3.52501C7.65276 3.39723 7.81109 3.33334 7.99998 3.33334C8.18887 3.33334 8.3472 3.39723 8.47498 3.52501C8.60276 3.65279 8.66665 3.81112 8.66665 4.00001V7.33334H12C12.1889 7.33334 12.3472 7.39723 12.475 7.52501C12.6028 7.65279 12.6666 7.81112 12.6666 8.00001C12.6666 8.1889 12.6028 8.34723 12.475 8.47501C12.3472 8.60279 12.1889 8.66668 12 8.66668H8.66665V12C8.66665 12.1889 8.60276 12.3472 8.47498 12.475C8.3472 12.6028 8.18887 12.6667 7.99998 12.6667C7.81109 12.6667 7.65276 12.6028 7.52498 12.475C7.3972 12.3472 7.33331 12.1889 7.33331 12V8.66668Z"
+                    fill="#006796"
+                  />
+                </g>
+              </svg>
+              <AddCompanyText>회사 추가하기</AddCompanyText>
+            </AddCompany>
+          </MyReportHeader>
           <CompanyList>
             <CompanyHeader>
               <CompanyName>삼성전자</CompanyName>
@@ -196,46 +224,7 @@ export const LeftBarPage = () => {
               <AddText>질문 추가하기</AddText>
             </AddQuestion>
           </CompanyList>
-          <AddCompany>
-            <Ico>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="24"
-                viewBox="0 0 25 24"
-                fill="none"
-              >
-                <mask
-                  id="mask0_2367_147"
-                  maskUnits="userSpaceOnUse"
-                  x="0"
-                  y="0"
-                  width="25"
-                  height="24"
-                >
-                  <rect x="0.5" width="24" height="24" fill="#D9D9D9" />
-                </mask>
-                <g mask="url(#mask0_2367_147)">
-                  <path
-                    d="M11.5 13H6.5C6.21667 13 5.97917 12.9042 5.7875 12.7125C5.59583 12.5208 5.5 12.2833 5.5 12C5.5 11.7167 5.59583 11.4792 5.7875 11.2875C5.97917 11.0958 6.21667 11 6.5 11H11.5V6C11.5 5.71667 11.5958 5.47917 11.7875 5.2875C11.9792 5.09583 12.2167 5 12.5 5C12.7833 5 13.0208 5.09583 13.2125 5.2875C13.4042 5.47917 13.5 5.71667 13.5 6V11H18.5C18.7833 11 19.0208 11.0958 19.2125 11.2875C19.4042 11.4792 19.5 11.7167 19.5 12C19.5 12.2833 19.4042 12.5208 19.2125 12.7125C19.0208 12.9042 18.7833 13 18.5 13H13.5V18C13.5 18.2833 13.4042 18.5208 13.2125 18.7125C13.0208 18.9042 12.7833 19 12.5 19C12.2167 19 11.9792 18.9042 11.7875 18.7125C11.5958 18.5208 11.5 18.2833 11.5 18V13Z"
-                    fill="#006796"
-                  />
-                </g>
-              </svg>
-            </Ico>
-            <AddText>회사 추가하기</AddText>
-          </AddCompany>
         </WritingListWrapper>
-        <CheckReportBtn>
-          <Text>
-            <span className="WhiteColor">첨삭</span>
-          </Text>
-        </CheckReportBtn>
-        <DeleteBtn>
-          <Text>
-            <span className="RedColor">삭제</span>
-          </Text>
-        </DeleteBtn>
         <ProtectListText>개인정보처리방침</ProtectListText>
       </LeftBar>
     </>

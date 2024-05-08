@@ -47,14 +47,13 @@ export const LogInBtn = styled.div`
   height: 42px;
   flex-direction: column;
   justify-content: center;
-  background-image: linear-gradient(93deg, #a1e1ff 27.84%, #acfcc7 103.81%);
-  border: 1px solid var(--Violet-70, #9e86fc);
+  background: var(--Light-Blue-30, #006796);
   border-radius: 8px;
   cursor: pointer;
 `;
 
 export const LogInText = styled.div`
-  color: var(--Primary-30, var(--Light-Blue-30, #006796));
+  color: var(--Common-100, var(--Common-100, #fff));
   text-align: center;
   font-feature-settings: "ss10" on;
 
@@ -149,9 +148,37 @@ export const WritingListWrapper = styled.div`
   opacity: 0.9;
 `;
 
-export const SubTitle = styled.div`
+export const MyReportHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
   align-self: stretch;
-  color: var(--Neutral-80, var(--Neutral-80, #b0b0b0));
+`;
+
+export const SubTitle = styled.div`
+  color: var(--Primary-10, var(--Light-Blue-10, #002130));
+  font-feature-settings: "ss10" on;
+
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 141.2%;
+`;
+
+export const AddCompany = styled.div`
+  display: flex;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 4px;
+  background: var(--Light-Blue-90, #c4ecfe);
+  cursor: pointer;
+`;
+
+export const AddCompanyText = styled.div`
+  color: var(--Primary-30, var(--Light-Blue-30, #006796));
   font-feature-settings: "ss10" on;
 
   font-size: 13px;
@@ -307,46 +334,6 @@ export const AddText = styled.div`
   line-height: 138.5%; /* 18.005px */
   letter-spacing: 0.252px;
   padding-top: 1%;
-`;
-
-export const AddCompany = styled.button`
-  display: flex;
-  padding: 8px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  align-self: stretch;
-  border-radius: 8px;
-  background: var(--Light-Blue-90, #c4ecfe);
-  border: none;
-  cursor: pointer;
-`;
-
-export const CheckReportBtn = styled.button`
-  display: flex;
-  height: 45px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-self: stretch;
-  border-radius: 8px;
-  background: var(--Light-Blue-30, #006796);
-
-  border: none;
-  cursor: pointer;
-`;
-
-export const DeleteBtn = styled.button`
-  display: flex;
-  height: 45px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-self: stretch;
-  border-radius: 8px;
-  border: 1px solid var(--Light-Blue-30, #006796);
-  background: var(--Common-100, #fff);
-  cursor: pointer;
 `;
 
 export const Text = styled.div`
