@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { SetProfile } from "@/app/utils/Profile";
+import { useRef } from "react";
 import { Login } from "../../Login";
 import {
   CompanyHeader,
