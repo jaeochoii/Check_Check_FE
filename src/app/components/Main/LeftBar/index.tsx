@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { SetProfile } from "@/app/utils/Profile";
+import { Login } from "../../Login";
 import {
   CompanyHeader,
   CompanyList,
@@ -49,6 +50,7 @@ interface Props {
 export const LeftBarPage = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isVisible, setIsVisible] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const TextOverflow: React.FC<Props> = ({ text }) => {
     const maxLength: number = 8;
@@ -83,6 +85,10 @@ export const LeftBarPage = () => {
     ]);
   };
 
+  const handleLoginClick = () => {
+    setIsModalOpen(true);
+  };
+
   const handleDeleteQuestion = (index: number) => {
     setQuestions((prevQuestions) => {
       const updatedQuestions = prevQuestions
@@ -100,20 +106,20 @@ export const LeftBarPage = () => {
   return (
     <>
       <LeftBar>
-        {/**
-         *         <ProfileLayout>
+        <ProfileLayout>
           <GuideTextWrapper>
             <GuideText>로그인 후 자기소개서 저장 기능을 누려보세요!</GuideText>
           </GuideTextWrapper>
           <LogInBtn>
-            <LogInText>로그인</LogInText>
+            <LogInText onClick={handleLoginClick}>로그인</LogInText>
+            {isModalOpen && <Login onClose={() => setIsModalOpen(false)} />}
           </LogInBtn>
           <SignUpBtn>
             <SignUpText>회원가입</SignUpText>
           </SignUpBtn>
         </ProfileLayout>
-         */}
-        <Profile>
+        {/**
+         *         <Profile>
           <SetProfile />
           <ProfileTextWrapper>
             <ProfileText>
@@ -182,6 +188,7 @@ export const LeftBarPage = () => {
             <LogOutText>로그아웃</LogOutText>
           </ProfileLogoutWrapper>
         </ButtonsWrapper>
+         */}
         <MyReportHeader>
           <SubTitle>내 자소서</SubTitle>
           <AddCompany>
