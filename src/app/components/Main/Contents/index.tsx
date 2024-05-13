@@ -61,7 +61,12 @@ export const ContentsPage: React.FC = () => {
           onChange={handleChange}
         ></InputAnswer>
         <CountWords>
-          <span className="currentWords">{text.length}</span> / 700
+          <span
+            className={text.length > 700 ? "overCurrentWords" : "currentWords"}
+          >
+            {text.length}
+          </span>
+          / 700
         </CountWords>
       </Contents>
     </>

@@ -102,4 +102,8 @@ export const CountWords = styled.div`
   .currentWords {
     color: var(--Additional-40, var(--Green-40, #009632));
   }
+
+  .overCurrentWords {
+    color: var(--Error-40, var(--Red-40, #e52222));
+  }
 `;
