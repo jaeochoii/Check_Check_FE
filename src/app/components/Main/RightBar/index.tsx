@@ -16,18 +16,22 @@ import {
   CheckWordsText,
   SaveBtn,
   SaveText,
+  GuideText,
 } from "./style";
 
 export const RightBarPage: React.FC = () => {
+  const [guideVisible, setGuideVisible] = useState<boolean>(true);
   const [memos, setMemos] = useState<{ key: number; isChecked: boolean }[]>([]);
 
   const handleAddMemo = () => {
     setMemos([...memos, { key: memos.length, isChecked: false }]);
+    setGuideVisible(false);
   };
 
   const handleDeleteMemo = () => {
     const updatedMemos = memos.filter((memo) => !memo.isChecked);
     setMemos(updatedMemos);
+    memos.length === 1 ? setGuideVisible(true) : setGuideVisible(false);
   };
 
   const handleCheckboxChange = (key: number, isChecked: boolean) => {
@@ -80,6 +84,11 @@ export const RightBarPage: React.FC = () => {
               </svg>
             </DeleteIco>
           </MemoTitle>
+          <GuideText visible={guideVisible}>
+            아래 + 버튼을 클릭하여
+            <br />
+            메모를 작성해보세요.
+          </GuideText>
           {memos.map((memo) => (
             <MemoLayout
               key={memo.key}

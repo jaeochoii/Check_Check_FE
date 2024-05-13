@@ -90,6 +90,20 @@ export const DeleteIco = styled.div`
   cursor: pointer;
 `;
 
+export const GuideText = styled.div<{ visible: boolean }>`
+  display: ${(props) =>
+    props.visible ? "block" : "none"}; /* 상태에 따라 가시성 조절 */
+
+  color: var(--Primary-10, var(--Light-Blue-10, #002130));
+  text-align: center;
+  font-feature-settings: "ss10" on;
+
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 141.2%;
+`;
+
 export const AddMemo = styled.button`
   display: flex;
   padding: 8px;
