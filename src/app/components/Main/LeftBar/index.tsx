@@ -37,6 +37,9 @@ import {
   CheckMyReport,
   Text,
   ButtonsWrapper,
+  NoneList,
+  IcoWrapper,
+  NoneText,
 } from "./style";
 
 interface Question {
@@ -51,6 +54,7 @@ interface Props {
 export const LeftBarPage = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isVisible, setIsVisible] = useState(true);
+  const [isNone, setIsNone] = useState(false);
 
   const TextOverflow: React.FC<Props> = ({ text }) => {
     const maxLength: number = 8;
@@ -72,6 +76,7 @@ export const LeftBarPage = () => {
 
   const handleDeleteButtonClick = () => {
     setIsVisible(false);
+    setIsNone(true);
   };
 
   const handleAddQuestion = () => {
@@ -344,6 +349,39 @@ export const LeftBarPage = () => {
               </CheckMyReport>
             </CompanyList>
           )}
+          <NoneList visible={isNone}>
+            <IcoWrapper>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+              >
+                <mask
+                  id="mask0_2658_572"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="48"
+                  height="48"
+                >
+                  <rect width="48" height="48" fill="#002130" />
+                </mask>
+                <g mask="url(#mask0_2658_572)">
+                  <path
+                    d="M22 30V34C22 34.5667 22.1917 35.0417 22.575 35.425C22.9583 35.8083 23.4333 36 24 36C24.5667 36 25.0417 35.8083 25.425 35.425C25.8083 35.0417 26 34.5667 26 34V30H30C30.5667 30 31.0417 29.8083 31.425 29.425C31.8083 29.0417 32 28.5667 32 28C32 27.4333 31.8083 26.9583 31.425 26.575C31.0417 26.1917 30.5667 26 30 26H26V22C26 21.4333 25.8083 20.9583 25.425 20.575C25.0417 20.1917 24.5667 20 24 20C23.4333 20 22.9583 20.1917 22.575 20.575C22.1917 20.9583 22 21.4333 22 22V26H18C17.4333 26 16.9583 26.1917 16.575 26.575C16.1917 26.9583 16 27.4333 16 28C16 28.5667 16.1917 29.0417 16.575 29.425C16.9583 29.8083 17.4333 30 18 30H22ZM12 44C10.9 44 9.95833 43.6083 9.175 42.825C8.39167 42.0417 8 41.1 8 40V8C8 6.9 8.39167 5.95833 9.175 5.175C9.95833 4.39167 10.9 4 12 4H26.35C26.8833 4 27.3917 4.1 27.875 4.3C28.3583 4.5 28.7833 4.78333 29.15 5.15L38.85 14.85C39.2167 15.2167 39.5 15.6417 39.7 16.125C39.9 16.6083 40 17.1167 40 17.65V40C40 41.1 39.6083 42.0417 38.825 42.825C38.0417 43.6083 37.1 44 36 44H12ZM26 16V8H12V40H36V18H28C27.4333 18 26.9583 17.8083 26.575 17.425C26.1917 17.0417 26 16.5667 26 16Z"
+                    fill="#002130"
+                  />
+                </g>
+              </svg>
+            </IcoWrapper>
+            <NoneText>
+              회사 추가하기 버튼을 눌러
+              <br />
+              자기소개서를 작성해보세요.
+            </NoneText>
+          </NoneList>
         </WritingListWrapper>
         <ProtectListText>개인정보처리방침</ProtectListText>
       </LeftBar>

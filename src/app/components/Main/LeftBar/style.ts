@@ -364,3 +364,29 @@ export const ProtectListText = styled.div`
 
   cursor: pointer;
 `;
+
+export const NoneList = styled.div<{ visible: boolean }>`
+  display: ${(props) => (props.visible ? "flex" : "none")};
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex: 1 0 0;
+  align-self: stretch;
+`;
+
+export const IcoWrapper = styled.div`
+  width: 48px;
+  height: 48px;
+`;
+
+export const NoneText = styled.div`
+  color: var(--Primary-10, var(--Light-Blue-10, #002130));
+  text-align: center;
+  font-feature-settings: "ss10" on;
+
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 141.2%;
+`;

@@ -31,7 +31,7 @@ export const RightBarPage: React.FC = () => {
   const handleDeleteMemo = () => {
     const updatedMemos = memos.filter((memo) => !memo.isChecked);
     setMemos(updatedMemos);
-    memos.length === 1 ? setGuideVisible(true) : setGuideVisible(false);
+    setGuideVisible(updatedMemos.length === 0);
   };
 
   const handleCheckboxChange = (key: number, isChecked: boolean) => {

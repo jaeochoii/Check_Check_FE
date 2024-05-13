@@ -91,8 +91,7 @@ export const DeleteIco = styled.div`
 `;
 
 export const GuideText = styled.div<{ visible: boolean }>`
-  display: ${(props) =>
-    props.visible ? "block" : "none"}; /* 상태에 따라 가시성 조절 */
+  display: ${(props) => (props.visible ? "block" : "none")};
 
   color: var(--Primary-10, var(--Light-Blue-10, #002130));
   text-align: center;
