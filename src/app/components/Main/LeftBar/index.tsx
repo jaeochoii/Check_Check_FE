@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useState } from "react";
+import Link from "next/link";
 import { SetProfile } from "@/app/utils/Profile";
 import { useRef } from "react";
-import { Login } from "../../Login";
 import {
   CompanyHeader,
   CompanyList,
@@ -51,7 +51,6 @@ interface Props {
 export const LeftBarPage = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isVisible, setIsVisible] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const TextOverflow: React.FC<Props> = ({ text }) => {
     const maxLength: number = 8;
@@ -86,10 +85,6 @@ export const LeftBarPage = () => {
     ]);
   };
 
-  const handleLoginClick = () => {
-    setIsModalOpen(true);
-  };
-
   const handleDeleteQuestion = (index: number) => {
     setQuestions((prevQuestions) => {
       const updatedQuestions = prevQuestions
@@ -112,8 +107,9 @@ export const LeftBarPage = () => {
             <GuideText>로그인 후 자기소개서 저장 기능을 누려보세요!</GuideText>
           </GuideTextWrapper>
           <LogInBtn>
-            <LogInText onClick={handleLoginClick}>로그인</LogInText>
-            {isModalOpen && <Login onClose={() => setIsModalOpen(false)} />}
+            <Link href={"./login"}>
+              <LogInText>로그인</LogInText>
+            </Link>
           </LogInBtn>
           <SignUpBtn>
             <SignUpText>회원가입</SignUpText>
