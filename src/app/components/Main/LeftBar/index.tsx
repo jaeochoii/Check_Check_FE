@@ -218,7 +218,9 @@ export const LeftBarPage = () => {
                 />
               </g>
             </svg>
-            <AddCompanyText>회사 추가하기</AddCompanyText>
+            <AddCompanyText>
+              <Link href={"./popUp"}>회사 추가하기</Link>
+            </AddCompanyText>
           </AddCompany>
         </MyReportHeader>
         <WritingListWrapper>
