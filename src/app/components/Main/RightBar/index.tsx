@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { MemoLayout } from "../../Layout/Memo";
+import { PopLayout } from "../../Layout/Pop";
 import {
   Hint,
   HintContents,
@@ -22,6 +23,14 @@ import {
 export const RightBarPage: React.FC = () => {
   const [guideVisible, setGuideVisible] = useState<boolean>(true);
   const [memos, setMemos] = useState<{ key: number; isChecked: boolean }[]>([]);
+  const [isPop, setIsPop] = useState(false);
+
+  const handleClick = () => {
+    setIsPop(true);
+    setTimeout(() => {
+      setIsPop(false);
+    }, 3000);
+  };
 
   const handleAddMemo = () => {
     setMemos([...memos, { key: memos.length, isChecked: false }]);
@@ -131,7 +140,8 @@ export const RightBarPage: React.FC = () => {
           <CheckWordsText>맞춤법 검사</CheckWordsText>
         </CheckWordsBtn>
         <SaveBtn>
-          <SaveText>자기소개서 저장</SaveText>
+          <SaveText onClick={handleClick}>자기소개서 저장</SaveText>
+          {isPop && <PopLayout />}
         </SaveBtn>
       </RightBar>
     </>
