@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import Link from "next/link";
+import { CompanyPageOne } from "../../Company/PageOne";
 import { SetProfile } from "@/app/utils/Profile";
 import { useRef } from "react";
 import {
@@ -55,6 +56,7 @@ export const LeftBarPage = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isVisible, setIsVisible] = useState(true);
   const [isNone, setIsNone] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const TextOverflow: React.FC<Props> = ({ text }) => {
     const maxLength: number = 8;
@@ -72,6 +74,10 @@ export const LeftBarPage = () => {
         <span>님</span>
       </div>
     );
+  };
+
+  const handleCompanyClick = () => {
+    setIsModalOpen(true);
   };
 
   const handleDeleteButtonClick = () => {
@@ -218,9 +224,12 @@ export const LeftBarPage = () => {
                 />
               </g>
             </svg>
-            <AddCompanyText>
-              <Link href={"./popUp"}>회사 추가하기</Link>
+            <AddCompanyText onClick={handleCompanyClick}>
+              회사 추가하기
             </AddCompanyText>
+            {isModalOpen && (
+              <CompanyPageOne onClose={() => setIsModalOpen(false)} />
+            )}
           </AddCompany>
         </MyReportHeader>
         <WritingListWrapper>

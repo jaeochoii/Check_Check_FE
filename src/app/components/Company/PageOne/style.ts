@@ -4,18 +4,34 @@ interface TextInputWrapperProps {
   isFocused: boolean;
 }
 
+export const Cover = styled.div`
+  cursor: default;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 101;
+`;
+
 export const LayOut = styled.div`
   display: flex;
-  width: 720px;
-  height: 480px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 680px;
+  height: 420px;
   padding: 60px;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  transform: translate(-50%, -50%);
   gap: 36px;
 
   border-radius: 48px;
   background: var(--Common-100, #fff);
+  z-index: 1000;
 
   box-shadow: 0px 16px 20px 0px rgba(0, 0, 0, 0.12),
     0px 8px 16px 0px rgba(0, 0, 0, 0.08), 0px 0px 8px 0px rgba(0, 0, 0, 0.08);
