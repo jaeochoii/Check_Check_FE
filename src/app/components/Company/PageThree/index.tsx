@@ -119,6 +119,7 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({ onClose }) => {
               onFocus={handleFocusT}
               onBlur={handleBlurT}
               onChange={handleInputChangeT}
+              style={{ lineHeight: 2.5, textAlign: "center" }}
             />
           </TextWrapper>
         </Wrapper>

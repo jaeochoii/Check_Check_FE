@@ -94,7 +94,7 @@ export const InputWrapper = styled.div<TextInputWrapperProps>`
     props.isFocused &&
     `
     border: 2px solid var(--Light-Blue-50, #00aeff);
-    background: var(--Common-100, #FFF);
+    background: var(--Neutral-99, #F7F7F7);
   `}
 `;
 
@@ -116,7 +116,7 @@ export const TextWrapper = styled.div<TextInputWrapperProps>`
     props.isFocused &&
     `
     border: 2px solid var(--Light-Blue-50, #00aeff);
-    background: var(--Common-100, #FFF);
+    background: var(--Neutral-99, #F7F7F7);
   `}
 `;
 
@@ -150,7 +150,7 @@ export const InputText = styled.textarea`
     font-size: 28px;
     font-weight: 600;
     color: var(--Neutral-70, var(--Neutral-70, #9b9b9b));
-    padding-top: 20px;
+    padding-top: 6%;
   }
 `;
 

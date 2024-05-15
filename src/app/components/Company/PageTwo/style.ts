@@ -86,7 +86,7 @@ export const InputWrapper = styled.div<TextInputWrapperProps>`
     props.isFocused &&
     `
     border: 2px solid var(--Light-Blue-50, #00aeff);
-    background: var(--Common-100, #FFF);
+    background: var(--Neutral-99, #F7F7F7);
   `}
 `;
 
