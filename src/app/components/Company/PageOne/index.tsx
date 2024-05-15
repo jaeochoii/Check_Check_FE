@@ -11,6 +11,7 @@ import {
   InputText,
   Next,
 } from "./style";
+import { CompanyPageTwo } from "../PageTwo";
 
 interface CompanyProps {
   onClose: () => void;
@@ -19,6 +20,7 @@ interface CompanyProps {
 export const CompanyPageOne: React.FC<CompanyProps> = ({ onClose }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleFocus = () => {
@@ -29,6 +31,10 @@ export const CompanyPageOne: React.FC<CompanyProps> = ({ onClose }) => {
     if (inputRef.current && !inputRef.current.value.trim()) {
       setIsFocused(false);
     }
+  };
+
+  const handleTaskClick = () => {
+    setIsModalOpen(true);
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,6 +91,7 @@ export const CompanyPageOne: React.FC<CompanyProps> = ({ onClose }) => {
             />
           </InputWrapper>
           <Next
+            onClick={handleTaskClick}
             style={{
               backgroundColor: inputValue
                 ? "var(--Light-Blue-80, #A1E1FF)"
@@ -96,6 +103,9 @@ export const CompanyPageOne: React.FC<CompanyProps> = ({ onClose }) => {
           >
             다음
           </Next>
+          {isModalOpen && (
+            <CompanyPageTwo onClose={() => setIsModalOpen(false)} />
+          )}
         </LayOut>
       </Cover>
     </>
