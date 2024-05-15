@@ -100,11 +100,11 @@ export const InputWrapper = styled.div<TextInputWrapperProps>`
 
 export const TextWrapper = styled.div<TextInputWrapperProps>`
   display: flex;
-  width: 184px;
+  width: 140px;
   padding: 8px 24px;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   align-self: stretch;
 
   border-radius: 36px;
@@ -120,12 +120,14 @@ export const TextWrapper = styled.div<TextInputWrapperProps>`
   `}
 `;
 
-export const InputText = styled.input`
+export const InputText = styled.textarea`
   display: flex;
   height: 76px;
   flex-direction: column;
   justify-content: center;
   align-self: stretch;
+  text-align: left;
+  overflow-wrap: break-word;
 
   color: #000;
   font-feature-settings: "ss10" on;
@@ -148,6 +150,7 @@ export const InputText = styled.input`
     font-size: 28px;
     font-weight: 600;
     color: var(--Neutral-70, var(--Neutral-70, #9b9b9b));
+    padding-top: 20px;
   }
 `;
 

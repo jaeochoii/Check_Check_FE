@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, ChangeEventHandler } from "react";
 import {
   BigCircle,
   LayOut,
@@ -22,10 +22,20 @@ interface CompanyProps {
 export const CompanyPageThree: React.FC<CompanyProps> = ({ onClose }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const [isFocusedT, setIsFocusedT] = useState(false);
   const [inputValueT, setInputValueT] = useState("");
-  const inputRefT = useRef<HTMLInputElement>(null);
+  const inputRefT = useRef<HTMLTextAreaElement>(null);
+
+  const handleInputChange: ChangeEventHandler<HTMLTextAreaElement> = (
+    event
+  ) => {
+    const inputValue = event.target.value;
+    setInputValue(inputValue);
+    if (inputValue.length >= 100) {
+      setInputValue((prevValue) => prevValue + "\n");
+    }
+  };
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -35,10 +45,6 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({ onClose }) => {
     if (inputRef.current && !inputRef.current.value.trim()) {
       setIsFocused(false);
     }
-  };
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
   };
 
   const handleFocusT = () => {
@@ -51,7 +57,9 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({ onClose }) => {
     }
   };
 
-  const handleInputChangeT = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChangeT = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     setInputValueT(event.target.value);
   };
 
@@ -128,7 +136,7 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({ onClose }) => {
                   : "var(--Neutral-70, var(--Neutral-70, #9b9b9b))",
             }}
           >
-            다음
+            완료
           </Next>
         </BtnWrapper>
       </LayOut>
