@@ -32,20 +32,17 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({
   onPrev,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
-  const [inputValue, setInputValue] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [isFocusedT, setIsFocusedT] = useState(false);
-  const [inputValueT, setInputValueT] = useState("");
   const inputRefT = useRef<HTMLTextAreaElement>(null);
 
   const handleInputChange: ChangeEventHandler<HTMLTextAreaElement> = (
     event
   ) => {
     const inputValue = event.target.value;
-    setInputValue(inputValue);
+    setQuestion(inputValue);
     if (inputValue.length >= 100) {
-      setInputValue((prevValue) => prevValue + "\n");
-      setQuestion(event.target.value);
+      setQuestion((prevValue) => prevValue + "\n");
     }
   };
 
@@ -72,7 +69,6 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({
   const handleInputChangeT = (
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
-    setInputValueT(event.target.value);
     setCharCount(event.target.value);
   };
 
@@ -143,11 +139,11 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({
           <Next
             style={{
               backgroundColor:
-                inputValue && inputValueT
+                question && charCount
                   ? "var(--Light-Blue-80, #A1E1FF)"
                   : "var(--Neutral-95, #DCDCDC)",
               color:
-                inputValue && inputValueT
+                question && charCount
                   ? "var(--Common-0, var(--Common-0, #000))"
                   : "var(--Neutral-70, var(--Neutral-70, #9b9b9b))",
             }}
