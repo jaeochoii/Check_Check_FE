@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Cover,
   BigCircle,
@@ -19,6 +19,7 @@ interface CompanyProps {
   setJobTitle: React.Dispatch<React.SetStateAction<string>>;
   onNext: () => void;
   onPrev: () => void;
+  onClose: () => void;
 }
 
 export const CompanyPageTwo: React.FC<CompanyProps> = ({
@@ -26,11 +27,17 @@ export const CompanyPageTwo: React.FC<CompanyProps> = ({
   setJobTitle,
   onNext,
   onPrev,
+  onClose,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
-  const [inputValue, setInputValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (jobTitle) {
+      setIsFocused(true);
+    }
+  }, [jobTitle]);
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -43,12 +50,11 @@ export const CompanyPageTwo: React.FC<CompanyProps> = ({
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
     setJobTitle(event.target.value);
   };
 
   return (
-    <Cover>
+    <Cover onClick={onClose}>
       <LayOut onClick={(e) => e.stopPropagation()}>
         <PageIndex>
           <SmallCircle>
@@ -102,10 +108,10 @@ export const CompanyPageTwo: React.FC<CompanyProps> = ({
           <Next
             onClick={onNext}
             style={{
-              backgroundColor: inputValue
+              backgroundColor: jobTitle
                 ? "var(--Light-Blue-80, #A1E1FF)"
                 : "var(--Neutral-95, #DCDCDC)",
-              color: inputValue
+              color: jobTitle
                 ? "var(--Common-0, var(--Common-0, #000))"
                 : "var(--Neutral-70, var(--Neutral-70, #9b9b9b))",
             }}

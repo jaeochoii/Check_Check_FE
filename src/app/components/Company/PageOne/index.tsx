@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Cover,
   BigCircle,
@@ -16,17 +16,23 @@ interface CompanyProps {
   companyName: string;
   setCompanyName: React.Dispatch<React.SetStateAction<string>>;
   onNext: () => void;
+  onClose: () => void;
 }
 
 export const CompanyPageOne: React.FC<CompanyProps> = ({
   companyName,
   setCompanyName,
   onNext,
+  onClose,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (companyName) {
+      setIsFocused(true);
+    }
+  }, [companyName]);
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -39,13 +45,12 @@ export const CompanyPageOne: React.FC<CompanyProps> = ({
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
     setCompanyName(event.target.value);
   };
 
   return (
     <>
-      <Cover>
+      <Cover onClick={onClose}>
         <LayOut onClick={(e) => e.stopPropagation()}>
           <PageIndex>
             <BigCircle>
@@ -97,10 +102,10 @@ export const CompanyPageOne: React.FC<CompanyProps> = ({
           <Next
             onClick={onNext}
             style={{
-              backgroundColor: inputValue
+              backgroundColor: companyName
                 ? "var(--Light-Blue-80, #A1E1FF)"
                 : "var(--Neutral-95, #DCDCDC)",
-              color: inputValue
+              color: companyName
                 ? "var(--Common-0, var(--Common-0, #000))"
                 : "var(--Neutral-70, var(--Neutral-70, #9b9b9b))",
             }}

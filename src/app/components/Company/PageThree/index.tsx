@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useRef, ChangeEventHandler } from "react";
+import { useState, useRef, useEffect, ChangeEventHandler } from "react";
 import {
   Cover,
   BigCircle,
@@ -22,6 +22,7 @@ interface CompanyProps {
   charCount: string;
   setCharCount: React.Dispatch<React.SetStateAction<string>>;
   onPrev: () => void;
+  onClose: () => void;
 }
 
 export const CompanyPageThree: React.FC<CompanyProps> = ({
@@ -30,11 +31,24 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({
   charCount,
   setCharCount,
   onPrev,
+  onClose,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [isFocusedT, setIsFocusedT] = useState(false);
   const inputRefT = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (question) {
+      setIsFocused(true);
+    }
+  }, [question]);
+
+  useEffect(() => {
+    if (charCount) {
+      setIsFocusedT(true);
+    }
+  }, [charCount]);
 
   const handleInputChange: ChangeEventHandler<HTMLTextAreaElement> = (
     event
@@ -73,7 +87,7 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({
   };
 
   return (
-    <Cover>
+    <Cover onClick={onClose}>
       <LayOut onClick={(e) => e.stopPropagation()}>
         <PageIndex>
           <SmallCircle>

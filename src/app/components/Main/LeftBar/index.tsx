@@ -56,7 +56,7 @@ export const LeftBarPage = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isVisible, setIsVisible] = useState(true);
   const [isNone, setIsNone] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const TextOverflow: React.FC<Props> = ({ text }) => {
     const maxLength: number = 8;
@@ -74,10 +74,6 @@ export const LeftBarPage = () => {
         <span>님</span>
       </div>
     );
-  };
-
-  const handleCompanyClick = () => {
-    setIsModalOpen(true);
   };
 
   const handleDeleteButtonClick = () => {
@@ -108,6 +104,14 @@ export const LeftBarPage = () => {
         });
       return updatedQuestions;
     });
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -224,10 +228,10 @@ export const LeftBarPage = () => {
                 />
               </g>
             </svg>
-            <AddCompanyText onClick={handleCompanyClick}>
+            <AddCompanyText onClick={handleOpenModal}>
               회사 추가하기
             </AddCompanyText>
-            {isModalOpen && <PopUpPage />}
+            {isModalOpen && <PopUpPage onClose={handleCloseModal} />}
           </AddCompany>
         </MyReportHeader>
         <WritingListWrapper>

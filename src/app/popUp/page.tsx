@@ -6,7 +6,11 @@ import { CompanyPageOne } from "../components/Company/PageOne";
 import { CompanyPageTwo } from "../components/Company/PageTwo";
 import { CompanyPageThree } from "../components/Company/PageThree";
 
-const PopUpPage: React.FC = () => {
+interface PopProps {
+  onClose: () => void;
+}
+
+const PopUpPage: React.FC<PopProps> = ({ onClose }) => {
   const [step, setStep] = useState<number>(1);
   const [companyName, setCompanyName] = useState<string>("");
   const [jobTitle, setJobTitle] = useState<string>("");
@@ -28,6 +32,7 @@ const PopUpPage: React.FC = () => {
           companyName={companyName}
           setCompanyName={setCompanyName}
           onNext={handleNext}
+          onClose={onClose}
         />
       )}
       {step === 2 && (
@@ -36,6 +41,7 @@ const PopUpPage: React.FC = () => {
           setJobTitle={setJobTitle}
           onNext={handleNext}
           onPrev={handlePrev}
+          onClose={onClose}
         />
       )}
       {step === 3 && (
@@ -45,6 +51,7 @@ const PopUpPage: React.FC = () => {
           charCount={charCount}
           setCharCount={setCharCount}
           onPrev={handlePrev}
+          onClose={onClose}
         />
       )}
     </>
