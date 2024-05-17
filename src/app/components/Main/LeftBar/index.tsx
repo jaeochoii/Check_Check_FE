@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import Link from "next/link";
-import { CompanyPageOne } from "../../Company/PageOne";
+import PopUpPage from "@/app/popUp/page";
 import { SetProfile } from "@/app/utils/Profile";
 import { useRef } from "react";
 import {
@@ -227,9 +227,7 @@ export const LeftBarPage = () => {
             <AddCompanyText onClick={handleCompanyClick}>
               회사 추가하기
             </AddCompanyText>
-            {isModalOpen && (
-              <CompanyPageOne onClose={() => setIsModalOpen(false)} />
-            )}
+            {isModalOpen && <PopUpPage />}
           </AddCompany>
         </MyReportHeader>
         <WritingListWrapper>

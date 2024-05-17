@@ -11,13 +11,18 @@ import {
   InputText,
   Next,
 } from "./style";
-import { CompanyPageTwo } from "../PageTwo";
 
 interface CompanyProps {
-  onClose: () => void;
+  companyName: string;
+  setCompanyName: React.Dispatch<React.SetStateAction<string>>;
+  onNext: () => void;
 }
 
-export const CompanyPageOne: React.FC<CompanyProps> = ({ onClose }) => {
+export const CompanyPageOne: React.FC<CompanyProps> = ({
+  companyName,
+  setCompanyName,
+  onNext,
+}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,17 +38,14 @@ export const CompanyPageOne: React.FC<CompanyProps> = ({ onClose }) => {
     }
   };
 
-  const handleTaskClick = () => {
-    setIsModalOpen(true);
-  };
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
+    setCompanyName(event.target.value);
   };
 
   return (
     <>
-      <Cover onClick={onClose}>
+      <Cover>
         <LayOut onClick={(e) => e.stopPropagation()}>
           <PageIndex>
             <BigCircle>
@@ -88,10 +90,12 @@ export const CompanyPageOne: React.FC<CompanyProps> = ({ onClose }) => {
               onFocus={handleFocus}
               onBlur={handleBlur}
               onChange={handleInputChange}
+              type="text"
+              value={companyName}
             />
           </InputWrapper>
           <Next
-            onClick={handleTaskClick}
+            onClick={onNext}
             style={{
               backgroundColor: inputValue
                 ? "var(--Light-Blue-80, #A1E1FF)"
@@ -103,9 +107,6 @@ export const CompanyPageOne: React.FC<CompanyProps> = ({ onClose }) => {
           >
             다음
           </Next>
-          {isModalOpen && (
-            <CompanyPageTwo onClose={() => setIsModalOpen(false)} />
-          )}
         </LayOut>
       </Cover>
     </>

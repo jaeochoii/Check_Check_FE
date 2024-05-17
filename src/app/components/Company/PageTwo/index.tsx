@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState, useRef } from "react";
 import {
+  Cover,
   BigCircle,
   LayOut,
   PageIndex,
@@ -12,13 +13,20 @@ import {
   Next,
   BtnWrapper,
 } from "./style";
-import { CompanyPageThree } from "../PageThree";
 
 interface CompanyProps {
-  onClose: () => void;
+  jobTitle: string;
+  setJobTitle: React.Dispatch<React.SetStateAction<string>>;
+  onNext: () => void;
+  onPrev: () => void;
 }
 
-export const CompanyPageTwo: React.FC<CompanyProps> = ({ onClose }) => {
+export const CompanyPageTwo: React.FC<CompanyProps> = ({
+  jobTitle,
+  setJobTitle,
+  onNext,
+  onPrev,
+}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,16 +42,13 @@ export const CompanyPageTwo: React.FC<CompanyProps> = ({ onClose }) => {
     }
   };
 
-  const handleQuestionClick = () => {
-    setIsModalOpen(true);
-  };
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
+    setJobTitle(event.target.value);
   };
 
   return (
-    <>
+    <Cover>
       <LayOut onClick={(e) => e.stopPropagation()}>
         <PageIndex>
           <SmallCircle>
@@ -88,12 +93,14 @@ export const CompanyPageTwo: React.FC<CompanyProps> = ({ onClose }) => {
             onFocus={handleFocus}
             onBlur={handleBlur}
             onChange={handleInputChange}
+            type="text"
+            value={jobTitle}
           />
         </InputWrapper>
         <BtnWrapper>
-          <Prev>이전</Prev>
+          <Prev onClick={onPrev}>이전</Prev>
           <Next
-            onClick={handleQuestionClick}
+            onClick={onNext}
             style={{
               backgroundColor: inputValue
                 ? "var(--Light-Blue-80, #A1E1FF)"
@@ -105,11 +112,8 @@ export const CompanyPageTwo: React.FC<CompanyProps> = ({ onClose }) => {
           >
             다음
           </Next>
-          {isModalOpen && (
-            <CompanyPageThree onClose={() => setIsModalOpen(false)} />
-          )}
         </BtnWrapper>
       </LayOut>
-    </>
+    </Cover>
   );
 };

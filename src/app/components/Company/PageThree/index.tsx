@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState, useRef, ChangeEventHandler } from "react";
 import {
+  Cover,
   BigCircle,
   LayOut,
   PageIndex,
@@ -16,10 +17,20 @@ import {
 } from "./style";
 
 interface CompanyProps {
-  onClose: () => void;
+  question: string;
+  setQuestion: React.Dispatch<React.SetStateAction<string>>;
+  charCount: string;
+  setCharCount: React.Dispatch<React.SetStateAction<string>>;
+  onPrev: () => void;
 }
 
-export const CompanyPageThree: React.FC<CompanyProps> = ({ onClose }) => {
+export const CompanyPageThree: React.FC<CompanyProps> = ({
+  question,
+  setQuestion,
+  charCount,
+  setCharCount,
+  onPrev,
+}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -34,6 +45,7 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({ onClose }) => {
     setInputValue(inputValue);
     if (inputValue.length >= 100) {
       setInputValue((prevValue) => prevValue + "\n");
+      setQuestion(event.target.value);
     }
   };
 
@@ -61,10 +73,11 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({ onClose }) => {
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setInputValueT(event.target.value);
+    setCharCount(event.target.value);
   };
 
   return (
-    <>
+    <Cover>
       <LayOut onClick={(e) => e.stopPropagation()}>
         <PageIndex>
           <SmallCircle>
@@ -110,6 +123,7 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({ onClose }) => {
               onFocus={handleFocus}
               onBlur={handleBlur}
               onChange={handleInputChange}
+              value={question}
             />
           </InputWrapper>
           <TextWrapper isFocused={isFocusedT}>
@@ -120,11 +134,12 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({ onClose }) => {
               onBlur={handleBlurT}
               onChange={handleInputChangeT}
               style={{ lineHeight: 2.5, textAlign: "center" }}
+              value={charCount}
             />
           </TextWrapper>
         </Wrapper>
         <BtnWrapper>
-          <Prev>이전</Prev>
+          <Prev onClick={onPrev}>이전</Prev>
           <Next
             style={{
               backgroundColor:
@@ -141,6 +156,6 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({ onClose }) => {
           </Next>
         </BtnWrapper>
       </LayOut>
-    </>
+    </Cover>
   );
 };
