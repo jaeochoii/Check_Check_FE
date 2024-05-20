@@ -53,7 +53,7 @@ export const Small_Title2 = styled.div`
 export const Main_Image = styled.div`
   justify-content: flex-start;
   height: auto;
-  margin-top: 12%;
+  margin-top: 10%;
   padding-left: 3%;
 `;
 
