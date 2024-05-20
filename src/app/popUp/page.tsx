@@ -25,6 +25,10 @@ const PopUpPage: React.FC<PopProps> = ({ onClose }) => {
     setStep((prevStep) => prevStep - 1);
   };
 
+  const handleComplete = () => {
+    onClose();
+  };
+
   return (
     <>
       {step === 1 && (
@@ -52,6 +56,7 @@ const PopUpPage: React.FC<PopProps> = ({ onClose }) => {
           setCharCount={setCharCount}
           onPrev={handlePrev}
           onClose={onClose}
+          onComplete={handleComplete}
         />
       )}
     </>

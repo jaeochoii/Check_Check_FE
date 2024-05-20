@@ -52,7 +52,15 @@ interface Props {
   text: string;
 }
 
-export const LeftBarPage = () => {
+interface LeftBarProps {
+  companyName: string;
+  question: string;
+}
+
+export const LeftBarPage: React.FC<LeftBarProps> = ({
+  companyName,
+  question,
+}) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isVisible, setIsVisible] = useState(true);
   const [isNone, setIsNone] = useState(false);
@@ -238,7 +246,7 @@ export const LeftBarPage = () => {
           {isVisible && (
             <CompanyList>
               <CompanyHeader>
-                <CompanyName>삼성전자</CompanyName>
+                <CompanyName>{companyName}</CompanyName>
                 <Ico>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

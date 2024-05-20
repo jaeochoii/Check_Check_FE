@@ -23,6 +23,7 @@ interface CompanyProps {
   setCharCount: React.Dispatch<React.SetStateAction<string>>;
   onPrev: () => void;
   onClose: () => void;
+  onComplete: () => void;
 }
 
 export const CompanyPageThree: React.FC<CompanyProps> = ({
@@ -32,6 +33,7 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({
   setCharCount,
   onPrev,
   onClose,
+  onComplete,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -151,6 +153,7 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({
         <BtnWrapper>
           <Prev onClick={onPrev}>이전</Prev>
           <Next
+            onClick={onComplete}
             style={{
               backgroundColor:
                 question && charCount
