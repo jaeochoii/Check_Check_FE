@@ -6,16 +6,29 @@ import { CompanyPageOne } from "../components/Company/PageOne";
 import { CompanyPageTwo } from "../components/Company/PageTwo";
 import { CompanyPageThree } from "../components/Company/PageThree";
 
-interface PopProps {
-  onClose: () => void;
+interface Question {
+  index: number;
+  text: string;
 }
 
-const PopUpPage: React.FC<PopProps> = ({ onClose }) => {
+interface PopProps {
+  onClose: () => void;
+  onComplete: (company: {
+    id: number;
+    name: string;
+    job: string;
+    question: string;
+    charCount: string;
+  }) => void;
+}
+
+const PopUpPage: React.FC<PopProps> = ({ onClose, onComplete }) => {
   const [step, setStep] = useState<number>(1);
   const [companyName, setCompanyName] = useState<string>("");
   const [jobTitle, setJobTitle] = useState<string>("");
   const [question, setQuestion] = useState<string>("");
   const [charCount, setCharCount] = useState<string>("");
+  const [id, setId] = useState<number>(0);
 
   const handleNext = () => {
     setStep((prevStep) => prevStep + 1);
@@ -26,6 +39,8 @@ const PopUpPage: React.FC<PopProps> = ({ onClose }) => {
   };
 
   const handleComplete = () => {
+    setId((prevId) => prevId + 1);
+    onComplete({ id, name: companyName, job: jobTitle, question, charCount });
     onClose();
   };
 
