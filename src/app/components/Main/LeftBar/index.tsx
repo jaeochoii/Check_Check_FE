@@ -62,15 +62,13 @@ interface Props {
 
 export const LeftBarPage: React.FC = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [isVisible, setIsVisible] = useState(true);
-  const [isNone, setIsNone] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [companies, setCompanies] = useState<Company[]>([]);
 
   const TextOverflow: React.FC<Props> = ({ text }) => {
     const maxLength: number = 8;
     const truncatedText: string =
-      text.length > maxLength ? text.substring(0, maxLength) + "..." : text; // 생략된 텍스트
+      text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
 
     const textStyles: React.CSSProperties = {
       color: "var(--Primary-40, #008dcf)",
@@ -118,7 +116,7 @@ export const LeftBarPage: React.FC = () => {
             .filter((q) => q.index !== indexToDelete)
             .map((q, idx) => ({
               ...q,
-              index: idx + 1, // 삭제 후 인덱스 재조정
+              index: idx + 1,
             }));
           return {
             ...company,
@@ -143,12 +141,12 @@ export const LeftBarPage: React.FC = () => {
       const newIndex = prevCompanies.length + 1;
       const newCompany = {
         id: newIndex,
-        name: company.name || "", // 필수 필드에 기본값 설정
-        job: company.job || "", // 필수 필드에 기본값 설정
-        questions: company.questions || [], // 새로운 질문 배열 설정
-        charCount: company.charCount || "", // 필수 필드에 기본값 설정
+        name: company.name || "",
+        job: company.job || "",
+        questions: company.questions || [],
+        charCount: company.charCount || "",
       };
-      console.log("새로운 회사 정보:", newCompany); // 회사 정보 출력
+      console.log("새로운 회사 정보:", newCompany);
       return [...prevCompanies, newCompany];
     });
   };
@@ -412,7 +410,7 @@ export const LeftBarPage: React.FC = () => {
               </CompanyList>
             ))
           ) : (
-            <NoneList visible={isNone}>
+            <NoneList visible={true}>
               <IcoWrapper>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
