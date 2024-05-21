@@ -151,6 +151,8 @@ export const WritingListWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 36px;
+  height: 700px;
+  overflow-y: scroll;
   flex: 1 0 0;
   align-self: stretch;
   opacity: 0.9;
