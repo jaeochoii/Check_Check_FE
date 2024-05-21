@@ -100,7 +100,7 @@ export const LeftBarPage: React.FC = () => {
               ...company.questions,
               {
                 index: newIndex,
-                text: "질문",
+                text: `질문 ${newIndex}`,
               },
             ],
           };
@@ -141,16 +141,15 @@ export const LeftBarPage: React.FC = () => {
   const handleComplete = (company: Partial<Company>) => {
     setCompanies((prevCompanies: Company[]) => {
       const newIndex = prevCompanies.length + 1;
-      return [
-        ...prevCompanies,
-        {
-          id: newIndex,
-          name: company.name || "", // 필수 필드에 기본값 설정
-          job: company.job || "", // 필수 필드에 기본값 설정
-          questions: company.questions || [], // 기본값 설정
-          charCount: company.charCount || "", // 기본값 설정
-        },
-      ];
+      const newCompany = {
+        id: newIndex,
+        name: company.name || "", // 필수 필드에 기본값 설정
+        job: company.job || "", // 필수 필드에 기본값 설정
+        questions: company.questions || [], // 새로운 질문 배열 설정
+        charCount: company.charCount || "", // 필수 필드에 기본값 설정
+      };
+      console.log("새로운 회사 정보:", newCompany); // 회사 정보 출력
+      return [...prevCompanies, newCompany];
     });
   };
 

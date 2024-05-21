@@ -17,7 +17,7 @@ interface PopProps {
     id: number;
     name: string;
     job: string;
-    question: string;
+    questions: Question[];
     charCount: string;
   }) => void;
 }
@@ -40,7 +40,8 @@ const PopUpPage: React.FC<PopProps> = ({ onClose, onComplete }) => {
 
   const handleComplete = () => {
     setId((prevId) => prevId + 1);
-    onComplete({ id, name: companyName, job: jobTitle, question, charCount });
+    const questions: Question[] = [{ index: 1, text: question }];
+    onComplete({ id, name: companyName, job: jobTitle, questions, charCount });
     onClose();
   };
 
