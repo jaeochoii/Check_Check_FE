@@ -107,3 +107,23 @@ export const CountWords = styled.div`
     color: var(--Error-40, var(--Red-40, #e52222));
   }
 `;
+
+export const Logo = styled.div`
+  width: 157px;
+  height: 108px;
+  padding-top: 40%;
+`;
+
+export const EmptyText = styled.div`
+  align-self: stretch;
+  color: var(--Common-0, var(--Common-0, #000));
+  text-align: center;
+
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 136.4%;
+  letter-spacing: -0.427px;
+
+  padding-top: 15%;
+`;
