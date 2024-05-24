@@ -19,8 +19,8 @@ import {
 interface CompanyProps {
   question: string;
   setQuestion: React.Dispatch<React.SetStateAction<string>>;
-  charCount: string;
-  setCharCount: React.Dispatch<React.SetStateAction<string>>;
+  charCount: number;
+  setCharCount: React.Dispatch<React.SetStateAction<number>>;
   onPrev: () => void;
   onClose: () => void;
   onComplete: () => void;
@@ -85,7 +85,8 @@ export const CompanyPageThree: React.FC<CompanyProps> = ({
   const handleInputChangeT = (
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
-    setCharCount(event.target.value);
+    const valueAsNumber = parseInt(event.target.value, 10);
+    setCharCount(valueAsNumber);
   };
 
   return (

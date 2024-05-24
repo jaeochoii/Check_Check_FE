@@ -42,28 +42,26 @@ import {
   IcoWrapper,
   NoneText,
 } from "./style";
-
-interface Question {
-  index: number;
-  text: string;
-}
-
-interface Company {
-  id: number;
-  name: string;
-  job: string;
-  questions: Question[];
-  charCount: string;
-}
+import { Question, Company } from "../type";
 
 interface Props {
   text: string;
 }
 
-export const LeftBarPage: React.FC = () => {
+interface LeftBarPageProps {
+  onQuestionClick: (company: Company, question: Question) => void;
+}
+
+export const LeftBarPage: React.FC<LeftBarPageProps> = ({
+  onQuestionClick,
+}) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [companies, setCompanies] = useState<Company[]>([]);
+  const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
+  const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(
+    null
+  );
 
   const TextOverflow: React.FC<Props> = ({ text }) => {
     const maxLength: number = 8;
@@ -92,15 +90,17 @@ export const LeftBarPage: React.FC = () => {
       return prevCompanies.map((company) => {
         if (company.id === companyId) {
           const newIndex = company.questions.length + 1;
+          const newQuestions = [
+            ...company.questions,
+            {
+              index: newIndex,
+              text: `질문 ${newIndex}`,
+              charCount: company.charCount,
+            },
+          ];
           return {
             ...company,
-            questions: [
-              ...company.questions,
-              {
-                index: newIndex,
-                text: `질문 ${newIndex}`,
-              },
-            ],
+            questions: newQuestions,
           };
         }
         return company;
@@ -136,15 +136,19 @@ export const LeftBarPage: React.FC = () => {
     setIsModalOpen(false);
   };
 
+  const handleQuestionClick = (company: Company, question: Question) => {
+    onQuestionClick(company, question);
+  };
+
   const handleComplete = (company: Partial<Company>) => {
     setCompanies((prevCompanies: Company[]) => {
       const newIndex = prevCompanies.length + 1;
-      const newCompany = {
+      const newCompany: Company = {
         id: newIndex,
         name: company.name || "",
         job: company.job || "",
         questions: company.questions || [],
-        charCount: company.charCount || "",
+        charCount: Number(company.charCount || 0),
       };
       console.log("새로운 회사 정보:", newCompany);
       return [...prevCompanies, newCompany];
@@ -337,7 +341,10 @@ export const LeftBarPage: React.FC = () => {
                 </CompanyHeader>
                 <QuestionList>
                   {company.questions.map((question) => (
-                    <QuestionEach key={question.index}>
+                    <QuestionEach
+                      key={question.index}
+                      onClick={() => handleQuestionClick(company, question)}
+                    >
                       <QuestionIndex>
                         <QuestionIndexText>{question.index}</QuestionIndexText>
                       </QuestionIndex>

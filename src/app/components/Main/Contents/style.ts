@@ -14,7 +14,7 @@ export const Contents = styled.div`
   background: #fff;
 `;
 
-export const Company = styled.div`
+export const Companies = styled.div`
   align-self: stretch;
   display: flex;
 `;

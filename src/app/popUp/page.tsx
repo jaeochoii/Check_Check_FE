@@ -9,6 +9,7 @@ import { CompanyPageThree } from "../components/Company/PageThree";
 interface Question {
   index: number;
   text: string;
+  charCount: number;
 }
 
 interface PopProps {
@@ -18,7 +19,7 @@ interface PopProps {
     name: string;
     job: string;
     questions: Question[];
-    charCount: string;
+    charCount: number;
   }) => void;
 }
 
@@ -27,7 +28,7 @@ const PopUpPage: React.FC<PopProps> = ({ onClose, onComplete }) => {
   const [companyName, setCompanyName] = useState<string>("");
   const [jobTitle, setJobTitle] = useState<string>("");
   const [question, setQuestion] = useState<string>("");
-  const [charCount, setCharCount] = useState<string>("");
+  const [charCount, setCharCount] = useState<number>(Number);
   const [id, setId] = useState<number>(0);
 
   const handleNext = () => {
@@ -40,7 +41,7 @@ const PopUpPage: React.FC<PopProps> = ({ onClose, onComplete }) => {
 
   const handleComplete = () => {
     setId((prevId) => prevId + 1);
-    const questions: Question[] = [{ index: 1, text: question }];
+    const questions: Question[] = [{ index: 1, text: question, charCount }];
     onComplete({ id, name: companyName, job: jobTitle, questions, charCount });
     onClose();
   };
