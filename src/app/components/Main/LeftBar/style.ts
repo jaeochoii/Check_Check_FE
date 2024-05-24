@@ -198,7 +198,7 @@ export const AddCompanyText = styled.div`
   letter-spacing: 0.252px;
 `;
 
-export const CompanyList = styled.div`
+export const CompanyList = styled.div<{ selected: boolean }>`
   display: flex;
   padding: 24px;
   flex-direction: column;
@@ -208,6 +208,8 @@ export const CompanyList = styled.div`
 
   border-radius: 12px;
   background: var(--Common-100, #fff);
+  border: ${({ selected }) =>
+    selected ? "1px solid var(--Violet-80, #C0B0FF);" : ""};
 
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.12),
     0px 0px 1px 0px rgba(0, 0, 0, 0.08), 0px 0px 1px 0px rgba(0, 0, 0, 0.08);

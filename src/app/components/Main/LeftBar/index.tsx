@@ -62,6 +62,9 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
   const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(
     null
   );
+  const [selectedQuestionIndex, setSelectedQuestionIndex] = useState<
+    number | null
+  >(null);
 
   const TextOverflow: React.FC<Props> = ({ text }) => {
     const maxLength: number = 8;
@@ -137,6 +140,8 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
   };
 
   const handleQuestionClick = (company: Company, question: Question) => {
+    setSelectedCompany(company);
+    setSelectedQuestionIndex(question.index);
     onQuestionClick(company, question);
   };
 
@@ -283,7 +288,13 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
         <WritingListWrapper>
           {companies.length > 0 ? (
             companies.map((company) => (
-              <CompanyList key={company.id}>
+              <CompanyList
+                key={company.id}
+                selected={
+                  selectedCompany?.id === company.id &&
+                  selectedQuestionIndex !== null
+                }
+              >
                 <CompanyHeader>
                   <CompanyName>{company.name}</CompanyName>
                   <Ico>
