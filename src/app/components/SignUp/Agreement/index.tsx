@@ -13,6 +13,8 @@ import {
   DivideLine,
   Text,
   CheckBox,
+  NextBtn,
+  NextText,
 } from "./style";
 
 export const AgreementPage: React.FC = () => {
@@ -365,6 +367,21 @@ export const AgreementPage: React.FC = () => {
             </Text>
           </AgreeOne>
         </SemiLayout>
+        <NextBtn
+          style={{
+            backgroundColor: isCheckedAll
+              ? "var(--Light-Blue-80, #A1E1FF)"
+              : "",
+          }}
+        >
+          <NextText
+            style={{
+              color: isCheckedAll ? "var(--Common-0, #000)" : "",
+            }}
+          >
+            다음
+          </NextText>
+        </NextBtn>
       </Layout>
     </>
   );
