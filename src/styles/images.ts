@@ -13,6 +13,7 @@ import boy2 from "../../public/image/img-boy-2.svg";
 import boy3 from "../../public/image/img-boy-3.svg";
 import girl1 from "../../public/image/img-girl-1.svg";
 import girl2 from "../../public/image/img-girl-2.svg";
+import girl3 from "../../public/image/img-girl-3.svg";
 
 // made icons
 import header_logo from "../../public/ico/ico-logo.svg";
@@ -32,6 +33,7 @@ export const Images: ImagesType = {
   boy3: boy3,
   girl1: girl1,
   girl2: girl2,
+  girl3: girl3,
 
   header_logo: header_logo,
   arrow_logo: arrow_logo,

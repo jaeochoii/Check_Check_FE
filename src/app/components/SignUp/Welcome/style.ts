@@ -1,4 +1,21 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const wave = keyframes`
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+`;
 
 export const Layout = styled.div`
   display: flex;
@@ -16,7 +33,10 @@ export const Logo = styled.div`
   width: 110.25px;
   height: 110.25px;
   flex-shrink: 0;
-
+  animation: ${fadeIn} 1s ease-in-out forwards,
+    ${wave} 1s 1s ease-in-out infinite;
+  animation-delay: 0.5s;
+  opacity: 0;
   fill: linear-gradient(135deg, #a1e1ff 0.11%, #9e86fc 99.89%);
 `;
 
@@ -27,6 +47,8 @@ export const WelcomeText = styled.div`
   justify-content: center;
   flex-shrink: 0;
   align-self: stretch;
+  animation: ${fadeIn} 1s ease-in-out forwards;
+  animation-delay: 1.5s;
 
   color: var(--Common-0, var(--Common-0, #000));
   text-align: center;
@@ -36,6 +58,7 @@ export const WelcomeText = styled.div`
   font-weight: 700;
   line-height: 128.6%;
   letter-spacing: -1.786px;
+  opacity: 0;
 `;
 
 export const Button = styled.div`
@@ -56,4 +79,8 @@ export const Button = styled.div`
   font-weight: 700;
   line-height: 133.4%;
   letter-spacing: -0.972px;
+
+  animation: ${fadeIn} 1s ease-in-out forwards;
+  animation-delay: 1.5s;
+  opacity: 0;
 `;

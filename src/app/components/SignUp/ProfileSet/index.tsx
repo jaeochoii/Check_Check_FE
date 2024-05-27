@@ -46,6 +46,9 @@ export const ProfileSetPage: React.FC<props> = ({ onNext }) => {
           <AvatarEach>
             <Image src={Images.boy3} alt={"남3"} />
           </AvatarEach>
+          <AvatarEach>
+            <Image src={Images.girl3} alt={"여3"} />
+          </AvatarEach>
         </AvatarLayout>
         <TextInputLayer>
           <TextInput
