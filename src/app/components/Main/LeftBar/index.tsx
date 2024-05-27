@@ -173,7 +173,9 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
             </Link>
           </LogInBtn>
           <SignUpBtn>
-            <SignUpText>회원가입</SignUpText>
+            <Link href={"./signUp"}>
+              <SignUpText>회원가입</SignUpText>
+            </Link>
           </SignUpBtn>
         </ProfileLayout>
         {/**

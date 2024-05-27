@@ -78,6 +78,7 @@ export const SignUpText = styled.div`
   font-weight: 500;
   line-height: 146.7%;
   letter-spacing: 0.144px;
+  cursor: pointer;
 `;
 
 export const Profile = styled.div`
