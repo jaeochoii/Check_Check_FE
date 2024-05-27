@@ -17,7 +17,11 @@ import {
   NextText,
 } from "./style";
 
-export const AgreementPage: React.FC = () => {
+interface props {
+  onNext: () => void;
+}
+
+export const AgreementPage: React.FC<props> = ({ onNext }) => {
   const [isCheckedA, setIsCheckedA] = useState(false);
   const [isCheckedB, setIsCheckedB] = useState(false);
   const [isCheckedAll, setIsCheckedAll] = useState(false);
@@ -368,6 +372,7 @@ export const AgreementPage: React.FC = () => {
           </AgreeOne>
         </SemiLayout>
         <NextBtn
+          onClick={onNext}
           style={{
             backgroundColor: isCheckedAll
               ? "var(--Light-Blue-80, #A1E1FF)"

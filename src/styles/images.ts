@@ -8,6 +8,11 @@ import intro_3 from "../../public/image/img-intro-3.svg";
 import login from "../../public/image/img-login.svg";
 import error_404 from "../../public/image/img-404.svg";
 import profile from "../../public/image/img-profile.svg";
+import boy1 from "../../public/image/img-boy-1.svg";
+import boy2 from "../../public/image/img-boy-2.svg";
+import boy3 from "../../public/image/img-boy-3.svg";
+import girl1 from "../../public/image/img-girl-1.svg";
+import girl2 from "../../public/image/img-girl-2.svg";
 
 // made icons
 import header_logo from "../../public/ico/ico-logo.svg";
@@ -22,6 +27,11 @@ export const Images: ImagesType = {
   login: login,
   error_404: error_404,
   profile: profile,
+  boy1: boy1,
+  boy2: boy2,
+  boy3: boy3,
+  girl1: girl1,
+  girl2: girl2,
 
   header_logo: header_logo,
   arrow_logo: arrow_logo,

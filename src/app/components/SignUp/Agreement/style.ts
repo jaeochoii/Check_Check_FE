@@ -4,10 +4,10 @@ export const Layout = styled.div`
   display: flex;
   width: 100%;
   height: 100vh;
-  padding-top: 48px;
+  margin-top: 5%;
+  padding-bottom: 5%;
   padding-left: 48px;
   padding-right: 48px;
-  padding-bottom: 24px;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
@@ -159,6 +159,7 @@ export const NextBtn = styled.div`
   border-radius: 48px;
   background: var(--Neutral-95, #dcdcdc);
   cursor: pointer;
+  margin-bottom: 5%;
 `;
 
 export const NextText = styled.div`
