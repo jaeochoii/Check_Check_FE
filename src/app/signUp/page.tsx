@@ -8,16 +8,22 @@ import { WelcomePage } from "../components/SignUp/Welcome";
 
 const SignUpPage: React.FC = () => {
   const [step, setStep] = useState<number>(1);
+  const [nickname, setNickname] = useState<string>("");
 
-  const handleNext = () => {
+  const handleNext = (newNickname?: string) => {
+    if (newNickname) {
+      setNickname(newNickname);
+    }
     setStep((prevStep) => prevStep + 1);
   };
 
   return (
     <>
       {step === 1 && <AgreementPage onNext={handleNext} />}
-      {step === 2 && <ProfileSetPage onNext={handleNext} />}
-      {step === 3 && <WelcomePage />}
+      {step === 2 && (
+        <ProfileSetPage onNext={(nickname) => handleNext(nickname)} />
+      )}
+      {step === 3 && <WelcomePage nickname={nickname} />}
     </>
   );
 };

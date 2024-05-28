@@ -1,9 +1,12 @@
 import * as React from "react";
 import Link from "next/link";
-
 import { Button, Layout, Logo, WelcomeText } from "./style";
 
-export const WelcomePage: React.FC = () => {
+interface WelcomePageProps {
+  nickname: string;
+}
+
+export const WelcomePage: React.FC<WelcomePageProps> = ({ nickname }) => {
   return (
     <>
       <Layout>
@@ -35,7 +38,8 @@ export const WelcomePage: React.FC = () => {
           </svg>
         </Logo>
         <WelcomeText>
-          만나서 정말 반가워요, (닉네임)님. <br />
+          {nickname}님 만나서 반가워요.
+          <br />
           짹짹과 함께 꿈을 향해 날아보세요.
         </WelcomeText>
         <Link href={"../../login"}>

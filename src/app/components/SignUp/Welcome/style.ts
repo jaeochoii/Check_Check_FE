@@ -63,7 +63,7 @@ export const WelcomeText = styled.div`
 
 export const Button = styled.div`
   display: flex;
-  padding: 24px;
+  padding: 16px;
   align-items: center;
   gap: 8px;
   border-radius: 24px;
@@ -74,7 +74,7 @@ export const Button = styled.div`
   text-align: center;
   font-feature-settings: "ss10" on;
 
-  font-size: 36px;
+  font-size: 28px;
   font-style: normal;
   font-weight: 700;
   line-height: 133.4%;
