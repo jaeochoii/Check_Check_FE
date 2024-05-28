@@ -128,7 +128,13 @@ export const ProfileSetPage: React.FC<props> = ({ onNext }) => {
   };
 
   const isFormComplete = () => {
-    return inputID && inputPW && inputRePW && inputName && selectedAvatar;
+    return (
+      inputID &&
+      inputPW &&
+      inputRePW &&
+      inputName &&
+      (setSelectedMenIndex || setSelectedWomenIndex)
+    );
   };
 
   const handleNextClick = () => {
@@ -223,7 +229,7 @@ export const ProfileSetPage: React.FC<props> = ({ onNext }) => {
             onClick={handleNextClick}
             style={{
               backgroundColor:
-                inputID && inputPW && inputRePW && inputName && selectedAvatar
+                inputID && inputPW && inputRePW && inputName
                   ? "var(--Light-Blue-80, #A1E1FF)"
                   : "",
             }}
@@ -231,7 +237,7 @@ export const ProfileSetPage: React.FC<props> = ({ onNext }) => {
             <NextText
               style={{
                 color:
-                  inputID && inputPW && inputRePW && inputName && selectedAvatar
+                  inputID && inputPW && inputRePW && inputName
                     ? "var(--Common-0, #000)"
                     : "",
               }}
