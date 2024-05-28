@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { Images } from "@/styles";
 import {
@@ -72,7 +73,9 @@ export const ProfileSettingPage: React.FC = () => {
         </TextLayout>
         <BtnLayout>
           <SaveLayout>
-            <SaveText>저장</SaveText>
+            <SaveText>
+              <Link href={"../../main"}>저장</Link>
+            </SaveText>
           </SaveLayout>
           <OutLayout>
             <OutText>회원탈퇴</OutText>
