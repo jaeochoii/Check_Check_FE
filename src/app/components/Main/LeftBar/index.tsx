@@ -163,7 +163,8 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
   return (
     <>
       <LeftBar>
-        <ProfileLayout>
+        {/**
+         * <ProfileLayout>
           <GuideTextWrapper>
             <GuideText>로그인 후 자기소개서 저장 기능을 누려보세요!</GuideText>
           </GuideTextWrapper>
@@ -178,8 +179,9 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
             </Link>
           </SignUpBtn>
         </ProfileLayout>
-        {/**
-         *         <Profile>
+         */}
+
+        <Profile>
           <SetProfile />
           <ProfileTextWrapper>
             <ProfileText>
@@ -216,7 +218,9 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
                 </g>
               </svg>
             </Ico>
-            <LogOutText>프로필 관리</LogOutText>
+            <LogOutText>
+              <Link href={"../../../setProfile"}>프로필 관리</Link>
+            </LogOutText>
           </ProfileLogoutWrapper>
           <ProfileLogoutWrapper>
             <Ico>
@@ -248,7 +252,6 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
             <LogOutText>로그아웃</LogOutText>
           </ProfileLogoutWrapper>
         </ButtonsWrapper>
-         */}
         <MyReportHeader>
           <SubTitle>내 자소서</SubTitle>
           <AddCompany>

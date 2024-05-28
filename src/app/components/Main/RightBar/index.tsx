@@ -59,8 +59,7 @@ export const RightBarPage: React.FC = () => {
         <Hint>
           <HintTitle>합격자 분석</HintTitle>
           <HintContents>
-            삼성전자 DA 사업부 합격자의 70%는 이 질문에 대해 ‘고객 만족’
-            키워드를 이용하여 답변했어요.
+            자기소개서를 작성하면 합격자 통계를 간단하게 보여드려요.
           </HintContents>
         </Hint>
         <Memo>

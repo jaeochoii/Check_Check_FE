@@ -164,7 +164,7 @@ export const MyReportHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
-  margin-top: 36px;
+  margin-top: 10px;
 `;
 
 export const SubTitle = styled.div`
