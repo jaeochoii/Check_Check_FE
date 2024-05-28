@@ -16,7 +16,7 @@ import {
   OutText,
   BtnLayout,
 } from "./style";
-import { SaveBtn } from "../Main/RightBar/style";
+import { OutPage } from "../Out";
 
 interface ImageData {
   src: string;
@@ -44,6 +44,7 @@ const CheckImages: ImageData[] = [
 export const ProfileSettingPage: React.FC = () => {
   const [Images, setImages] = useState<ImageData[]>(BeforeImages);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const handleAvatarClick = (src: string, alt: string, index: number) => {
     setSelectedIndex(index);
@@ -54,10 +55,18 @@ export const ProfileSettingPage: React.FC = () => {
     setImages(newImages);
   };
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <Layout>
-        <Header>닉네임의 정보를 수정할 수 있어요.</Header>
+        <Header>***님의 정보를 수정할 수 있어요.</Header>
         <ImageLayout>
           {Images.map((avatar, index) => (
             <AvatarEach
@@ -78,7 +87,8 @@ export const ProfileSettingPage: React.FC = () => {
             </SaveText>
           </SaveLayout>
           <OutLayout>
-            <OutText>회원탈퇴</OutText>
+            <OutText onClick={handleOpenModal}>회원탈퇴</OutText>
+            {isModalOpen && <OutPage onClose={handleCloseModal} />}
           </OutLayout>
         </BtnLayout>
       </Layout>
