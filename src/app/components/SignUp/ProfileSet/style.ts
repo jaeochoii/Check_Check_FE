@@ -120,11 +120,10 @@ export const WomenLayout = styled.div`
   gap: 40px;
 `;
 
-export const AvatarEach = styled.div<{ isSelected: boolean }>`
+export const AvatarEach = styled.div`
   width: 144px;
   height: 144px;
   cursor: pointer;
-  opacity: ${({ isSelected }) => (isSelected ? 0.5 : 1)};
   transition: opacity 0.3s;
 `;
 

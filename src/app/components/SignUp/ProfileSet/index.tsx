@@ -26,16 +26,33 @@ interface props {
   onNext: (nickname: string) => void;
 }
 
-const MenImages = [
+interface ImageData {
+  src: string;
+  alt: string;
+}
+
+const MenImages: ImageData[] = [
   { src: Images.boy1, alt: "남1" },
   { src: Images.boy2, alt: "남2" },
   { src: Images.boy3, alt: "남3" },
 ];
 
-const WomenImages = [
+const WomenImages: ImageData[] = [
   { src: Images.girl1, alt: "여1" },
   { src: Images.girl2, alt: "여2" },
   { src: Images.girl3, alt: "여3" },
+];
+
+const CheckMenImages: ImageData[] = [
+  { src: Images.checkBoy1, alt: "남1" },
+  { src: Images.checkBoy2, alt: "남2" },
+  { src: Images.checkBoy3, alt: "남3" },
+];
+
+const CheckWomenImages: ImageData[] = [
+  { src: Images.checkGirl1, alt: "여1" },
+  { src: Images.checkGirl2, alt: "여2" },
+  { src: Images.checkGirl3, alt: "여3" },
 ];
 
 export const ProfileSetPage: React.FC<props> = ({ onNext }) => {
@@ -43,7 +60,13 @@ export const ProfileSetPage: React.FC<props> = ({ onNext }) => {
   const [inputPW, setInputPW] = useState("");
   const [inputRePW, setInputRePW] = useState("");
   const [inputName, setInputName] = useState("");
-  const [selectedAvatar, setSelectedAvatar] = useState<string | null>(null);
+  const [selectedAvatar, setSelectedAvatar] = useState<ImageData | null>(null);
+  const [selectedMenIndex, setSelectedMenIndex] = useState<number | null>(null);
+  const [selectedWomenIndex, setSelectedWomenIndex] = useState<number | null>(
+    null
+  );
+  const [menImages, setMenImages] = useState<ImageData[]>(MenImages);
+  const [womenImages, setWomenImages] = useState<ImageData[]>(WomenImages);
   const [isPasswordMismatch, setIsPasswordMismatch] = useState(false);
   const [isFormIncomplete, setIsFormIncomplete] = useState(false);
 
@@ -61,8 +84,43 @@ export const ProfileSetPage: React.FC<props> = ({ onNext }) => {
     setInputName(e.target.value);
   };
 
-  const handleAvatarClick = (src: string) => {
-    setSelectedAvatar(src);
+  const handleAvatarClick = (
+    src: string,
+    alt: string,
+    isMen: boolean,
+    index: number
+  ) => {
+    if (isMen) {
+      setSelectedMenIndex(index);
+
+      const newMenImages = menImages.map((image, i) =>
+        i === index ? CheckMenImages[index] : MenImages[i]
+      );
+      setMenImages(newMenImages);
+
+      if (selectedWomenIndex !== null) {
+        const newWomenImages = womenImages.map((image, i) =>
+          i === selectedWomenIndex ? WomenImages[selectedWomenIndex] : image
+        );
+        setWomenImages(newWomenImages);
+        setSelectedWomenIndex(null);
+      }
+    } else {
+      setSelectedWomenIndex(index);
+
+      const newWomenImages = womenImages.map((image, i) =>
+        i === index ? CheckWomenImages[index] : WomenImages[i]
+      );
+      setWomenImages(newWomenImages);
+
+      if (selectedMenIndex !== null) {
+        const newMenImages = menImages.map((image, i) =>
+          i === selectedMenIndex ? MenImages[selectedMenIndex] : image
+        );
+        setMenImages(newMenImages);
+        setSelectedMenIndex(null);
+      }
+    }
   };
 
   const arePasswordsMatching = () => {
@@ -130,22 +188,24 @@ export const ProfileSetPage: React.FC<props> = ({ onNext }) => {
           </RightHeader>
           <AvatarLayout>
             <MenLayout>
-              {MenImages.map((avatar, index) => (
+              {menImages.map((avatar, index) => (
                 <AvatarEach
                   key={index}
-                  isSelected={selectedAvatar === avatar.src}
-                  onClick={() => handleAvatarClick(avatar.src)}
+                  onClick={() =>
+                    handleAvatarClick(avatar.src, avatar.alt, true, index)
+                  }
                 >
                   <Image src={avatar.src} alt={avatar.alt} />
                 </AvatarEach>
               ))}
             </MenLayout>
             <WomenLayout>
-              {WomenImages.map((avatar, index) => (
+              {womenImages.map((avatar, index) => (
                 <AvatarEach
                   key={index}
-                  isSelected={selectedAvatar === avatar.src}
-                  onClick={() => handleAvatarClick(avatar.src)}
+                  onClick={() =>
+                    handleAvatarClick(avatar.src, avatar.alt, false, index)
+                  }
                 >
                   <Image src={avatar.src} alt={avatar.alt} />
                 </AvatarEach>
