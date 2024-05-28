@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useRef } from "react";
+import Link from "next/link";
 import { FaRegUser } from "react-icons/fa6";
 import { MdOutlineVpnKey } from "react-icons/md";
 import {
@@ -108,7 +109,9 @@ export const Login: React.FC = () => {
                 placeholder="비밀번호"
               ></InputWrapper>
             </TextInputWrapper>
-            <SignUpWrapper>회원가입</SignUpWrapper>
+            <SignUpWrapper>
+              <Link href={"./signUp"}>회원가입</Link>
+            </SignUpWrapper>
           </LoginLayout>
           <SubmitBtn>
             <SubmitText>로그인</SubmitText>
