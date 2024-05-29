@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import Link from "next/link";
 import { FaRegUser } from "react-icons/fa6";
 import { MdOutlineVpnKey } from "react-icons/md";
+import { login } from "@/hooks/api";
 import {
   Cover,
   IcoWrapper,
@@ -20,6 +21,9 @@ import {
 } from "./style";
 
 export const Login: React.FC = () => {
+  const [inputID, setInputID] = useState<string>("");
+  const [inputPW, setInputPW] = useState<string>("");
+
   const [isFocusedID, setIsFocusedID] = useState(false);
   const [isFocusedPW, setIsFocusedPW] = useState(false);
 
@@ -43,6 +47,19 @@ export const Login: React.FC = () => {
   const handleBlurPW = () => {
     if (inputRefPW.current && !inputRefPW.current.value.trim()) {
       setIsFocusedPW(false);
+    }
+  };
+
+  const handleLoginClick = async () => {
+    try {
+      const response = await login({ username: inputID, password: inputPW });
+      console.log("Login successful:", response);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error("Error logging in:", error.message);
+      } else {
+        console.error("An unexpected error occurred");
+      }
     }
   };
 
@@ -114,7 +131,7 @@ export const Login: React.FC = () => {
             </SignUpWrapper>
           </LoginLayout>
           <SubmitBtn>
-            <SubmitText>로그인</SubmitText>
+            <SubmitText onClick={handleLoginClick}>로그인</SubmitText>
           </SubmitBtn>
         </RightDiv>
       </Cover>

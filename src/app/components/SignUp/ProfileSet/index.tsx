@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { register } from "@/hooks/api";
 import { Images } from "../../../../styles";
 import {
   Layout,
@@ -137,7 +138,7 @@ export const ProfileSetPage: React.FC<props> = ({ onNext }) => {
     );
   };
 
-  const handleNextClick = () => {
+  const handleNextClick = async () => {
     if (!arePasswordsMatching()) {
       setIsPasswordMismatch(true);
       return;
@@ -146,6 +147,21 @@ export const ProfileSetPage: React.FC<props> = ({ onNext }) => {
     if (!isFormComplete()) {
       setIsFormIncomplete(true);
       return;
+    }
+
+    try {
+      await register({
+        username: inputID,
+        password: inputPW,
+        nickname: inputName,
+      });
+      onNext(inputName);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error("Error registering user:", error.message);
+      } else {
+        console.error("An unexpected error occurred");
+      }
     }
 
     onNext(inputName);
