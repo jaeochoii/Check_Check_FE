@@ -23,9 +23,20 @@ export default function MainPage(): React.JSX.Element {
     setSelectedCompany(company);
     setSelectedQuestion(question);
   };
+
+  const handleDeleteCompany = (companyId: number) => {
+    if (selectedCompany && selectedCompany.id === companyId) {
+      setSelectedCompany(null);
+      setSelectedQuestion(null);
+    }
+  };
+
   return (
     <MainLay>
-      <LeftBarPage onQuestionClick={handleQuestionClick} />
+      <LeftBarPage
+        onQuestionClick={handleQuestionClick}
+        onDeleteCompany={handleDeleteCompany}
+      />
       <ContentsPage
         selectedCompany={selectedCompany}
         selectedQuestion={selectedQuestion}

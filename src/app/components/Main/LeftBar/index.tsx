@@ -50,10 +50,12 @@ interface Props {
 
 interface LeftBarPageProps {
   onQuestionClick: (company: Company, question: Question) => void;
+  onDeleteCompany: (companyId: number) => void;
 }
 
 export const LeftBarPage: React.FC<LeftBarPageProps> = ({
   onQuestionClick,
+  onDeleteCompany,
 }) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -86,6 +88,7 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
 
   const handleDeleteButtonClick = (id: number) => {
     setCompanies(companies.filter((company) => company.id !== id));
+    onDeleteCompany(id);
   };
 
   const handleAddQuestion = (companyId: number) => {
