@@ -134,7 +134,7 @@ export const ContentsPage: React.FC<ContentsPageProps> = ({
                 </defs>
               </svg>
             </Logo>
-            <EmptyText>EX. 자기소개서 작성하는 칸입니다.</EmptyText>
+            <EmptyText>자기소개서를 작성하는 칸입니다.</EmptyText>
           </>
         )}
       </Contents>
