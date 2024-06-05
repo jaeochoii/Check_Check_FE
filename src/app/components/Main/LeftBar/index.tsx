@@ -431,7 +431,9 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
                   <AddText>질문 추가하기</AddText>
                 </AddQuestion>
                 <CheckMyReport>
-                  <Text>첨삭</Text>
+                  <Link href={"../../../edit"}>
+                    <Text>첨삭</Text>
+                  </Link>
                 </CheckMyReport>
               </CompanyList>
             ))
