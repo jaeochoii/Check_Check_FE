@@ -473,7 +473,14 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
             </NoneList>
           )}
         </WritingListWrapper>
-        <ProtectListText>개인정보처리방침</ProtectListText>
+        <ProtectListText>
+          <Link
+            href="https://amused-papaya-254.notion.site/e67b6b00a7594f67bff74178943cf217?pvs=4"
+            passHref
+          >
+            개인정보처리방침
+          </Link>
+        </ProtectListText>
       </LeftBar>
     </>
   );
