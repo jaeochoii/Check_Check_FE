@@ -19,11 +19,31 @@ import {
   SaveText,
   GuideText,
 } from "./style";
+import { Company } from "../type";
 
-export const RightBarPage: React.FC = () => {
+interface Props {
+  selectedCompany: Company | null;
+}
+
+export const RightBarPage: React.FC<Props> = ({ selectedCompany }) => {
   const [guideVisible, setGuideVisible] = useState<boolean>(true);
   const [memos, setMemos] = useState<{ key: number; isChecked: boolean }[]>([]);
   const [isPop, setIsPop] = useState(false);
+
+  const tips = [
+    "자기소개서를 작성하면 합격자 통계를 간단하게 보여드려요.",
+    "삼성전자 BE 사업부 합격자의 70%는 이 질문에 대해 ‘고객 만족’ 키워드를 이용하여 답변했어요.",
+    "네이버 FE 합격자의 55%는 이 질문에 대해 새로운 AI 기술에 대해 언급하였어요.",
+    "엔씨소프트 합격자의 60%는 이 질문에 대해 ‘팀워크’ 키워드를 이용하여 답변했어요.",
+    "현대자동차 합격자의 65%는 이 질문에 대해 ‘미래 기술’ 키워드를 이용하여 답변했어요.",
+    "SK 합격자의 50%는 이 질문에 대해 ‘사회적 책임’ 키워드를 이용하여 답변했어요.",
+    "LG 합격자의 55%는 이 질문에 대해 ‘혁신’ 키워드를 이용하여 답변했어요.",
+    "CJ 합격자의 60%는 이 질문에 대해 ‘고객 중심’ 키워드를 이용하여 답변했어요.",
+    "롯데 합격자의 50%는 이 질문에 대해 ‘서비스’ 키워드를 이용하여 답변했어요.",
+    "네이버 합격자의 55%는 이 질문에 대해 ‘AI 기술’ 키워드를 이용하여 답변했어요.",
+    "토스 합격자의 60%는 이 질문에 대해 ‘핀테크’ 키워드를 이용하여 답변했어요.",
+    "포스코 합격자의 65%는 이 질문에 대해 ‘지속 가능성’ 키워드를 이용하여 답변했어요.",
+  ];
 
   const handleClick = () => {
     setIsPop(true);
@@ -53,14 +73,38 @@ export const RightBarPage: React.FC = () => {
     setMemos(updatedMemos);
   };
 
+  const getHint = (companyName: string | null) => {
+    if (!companyName) return tips[0];
+    const lowerName = companyName.toLowerCase();
+    if (lowerName.includes("삼성") || lowerName.includes("samsung"))
+      return tips[1];
+    if (lowerName.includes("카카오") || lowerName.includes("kakao"))
+      return tips[2];
+    if (lowerName.includes("엔씨") || lowerName.includes("nc")) return tips[3];
+    if (lowerName.includes("현대") || lowerName.includes("hyundai"))
+      return tips[4];
+    if (lowerName.includes("에스케이") || lowerName.includes("sk"))
+      return tips[5];
+    if (lowerName.includes("엘지") || lowerName.includes("lg")) return tips[6];
+    if (lowerName.includes("씨제이") || lowerName.includes("cj"))
+      return tips[7];
+    if (lowerName.includes("롯데") || lowerName.includes("lotte"))
+      return tips[8];
+    if (lowerName.includes("네이버") || lowerName.includes("naver"))
+      return tips[9];
+    if (lowerName.includes("토스") || lowerName.includes("toss"))
+      return tips[10];
+    if (lowerName.includes("포스코") || lowerName.includes("posco"))
+      return tips[11];
+    return tips[0];
+  };
+
   return (
     <>
       <RightBar>
         <Hint>
           <HintTitle>합격자 분석</HintTitle>
-          <HintContents>
-            자기소개서를 작성하면 합격자 통계를 간단하게 보여드려요.
-          </HintContents>
+          <HintContents>{getHint(selectedCompany?.name || null)}</HintContents>
         </Hint>
         <Memo>
           <MemoTitle>

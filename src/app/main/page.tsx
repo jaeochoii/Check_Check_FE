@@ -41,7 +41,7 @@ export default function MainPage(): React.JSX.Element {
         selectedCompany={selectedCompany}
         selectedQuestion={selectedQuestion}
       />
-      <RightBarPage />
+      <RightBarPage selectedCompany={selectedCompany} />
     </MainLay>
   );
 }
