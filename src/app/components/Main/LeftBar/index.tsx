@@ -41,6 +41,7 @@ import {
   NoneList,
   IcoWrapper,
   NoneText,
+  QuestionInput,
 } from "./style";
 import { Question, Company } from "../type";
 
@@ -68,6 +69,7 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
     number | null
   >(null);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [newQuestionText, setNewQuestionText] = useState<string>("");
 
   const TextOverflow: React.FC<Props> = ({ text }) => {
     const maxLength: number = 8;
@@ -93,6 +95,9 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
   };
 
   const handleAddQuestion = (companyId: number) => {
+    if (newQuestionText.trim() === "") {
+      return;
+    }
     setCompanies((prevCompanies: Company[]) => {
       return prevCompanies.map((company) => {
         if (company.id === companyId) {
@@ -101,7 +106,7 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
             ...company.questions,
             {
               index: newIndex,
-              text: `질문 ${newIndex}`,
+              text: newQuestionText,
               charCount: company.charCount,
             },
           ];
@@ -113,6 +118,8 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
         return company;
       });
     });
+
+    setNewQuestionText(""); // 질문 추가 후 입력 필드를 초기화
   };
 
   const handleDeleteQuestion = (companyId: number, indexToDelete: number) => {
@@ -410,6 +417,12 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
                     </QuestionEach>
                   ))}
                 </QuestionList>
+                <QuestionInput
+                  type="text"
+                  value={newQuestionText}
+                  onChange={(e) => setNewQuestionText(e.target.value)}
+                  placeholder="새로운 질문을 입력해주세요"
+                />
                 <AddQuestion onClick={() => handleAddQuestion(company.id)}>
                   <Ico>
                     <svg

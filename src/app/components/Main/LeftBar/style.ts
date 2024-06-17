@@ -395,3 +395,15 @@ export const NoneText = styled.div`
   font-weight: 600;
   line-height: 141.2%;
 `;
+
+export const QuestionInput = styled.input`
+  width: 100%;
+  border: none;
+  outline: none;
+  color: var(--Primary-10, var(--Light-Blue-10, #002130));
+  text-align: center;
+  font-feature-settings: "ss10" on;
+  font-weight: 600;
+  font-size: 15px;
+  font-style: normal;
+`;

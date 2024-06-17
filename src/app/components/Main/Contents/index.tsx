@@ -23,14 +23,20 @@ export const ContentsPage: React.FC<ContentsPageProps> = ({
   selectedCompany,
   selectedQuestion,
 }) => {
-  const [text, setText] = useState<string>("");
+  const [answers, setAnswers] = useState<{ [key: string]: string }>({});
 
   const questionText = selectedQuestion ? selectedQuestion.text : "";
 
-  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setText(event.target.value);
-  };
+  const questionId = selectedQuestion ? selectedQuestion.index : "";
 
+  const text = questionId ? answers[questionId] || "" : "";
+
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setAnswers({
+      ...answers,
+      [questionId]: event.target.value,
+    });
+  };
   return (
     <>
       <Contents>
@@ -71,6 +77,7 @@ export const ContentsPage: React.FC<ContentsPageProps> = ({
             <InputAnswer
               spellCheck="false"
               placeholder="내용은 이곳에 작성해주세요."
+              value={text}
               onChange={handleChange}
             ></InputAnswer>
             <CountWords>

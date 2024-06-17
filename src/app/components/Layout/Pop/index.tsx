@@ -5,7 +5,7 @@ export const PopLayout: React.FC = () => {
   return (
     <>
       <PopDiv>
-        <PopText>로그인 후 사용할 수 있어요.</PopText>
+        <PopText>자소서가 저장되었습니다.</PopText>
         <Exit>
           <svg
             xmlns="http://www.w3.org/2000/svg"
