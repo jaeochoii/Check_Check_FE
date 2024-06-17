@@ -19,10 +19,11 @@ export const Companies = styled.div`
   display: flex;
 `;
 
-export const CompanyLogo = styled.div`
+export const CompanyLogo = styled.img`
   width: 24px;
   height: 24px;
   margin-right: 1%;
+  object-fit: cover;
 `;
 
 export const CompanyName = styled.div`
