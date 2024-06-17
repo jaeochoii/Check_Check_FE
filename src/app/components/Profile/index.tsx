@@ -66,7 +66,7 @@ export const ProfileSettingPage: React.FC = () => {
   return (
     <>
       <Layout>
-        <Header>***님의 정보를 수정할 수 있어요.</Header>
+        <Header>인하대학교님의 정보를 수정할 수 있어요.</Header>
         <ImageLayout>
           {Images.map((avatar, index) => (
             <AvatarEach

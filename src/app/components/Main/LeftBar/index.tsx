@@ -188,7 +188,7 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
           <SetProfile />
           <ProfileTextWrapper>
             <ProfileText>
-              <TextOverflow text="닉네임이 길어지는 경우" />
+              <TextOverflow text="인하대학교" />
             </ProfileText>
             <ProfileText>행운을 빌어요!</ProfileText>
           </ProfileTextWrapper>

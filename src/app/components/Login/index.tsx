@@ -131,7 +131,9 @@ export const Login: React.FC = () => {
             </SignUpWrapper>
           </LoginLayout>
           <SubmitBtn>
-            <SubmitText onClick={handleLoginClick}>로그인</SubmitText>
+            <SubmitText onClick={handleLoginClick}>
+              <Link href={"./main"}>로그인</Link>
+            </SubmitText>
           </SubmitBtn>
         </RightDiv>
       </Cover>
