@@ -5,31 +5,55 @@ import {
   Header,
   ResultWrapper,
   EachResult,
+  ImageWrapper,
   LineWrapper,
   BtnWrapper,
   EachHeader,
+  EachContents,
+  Img,
 } from "./style";
 
 export const Edit: React.FC = () => {
   return (
     <>
       <Cover>
-        <Header>님의 HYUNDAI SW개발 직무 자기소개서 AI 첨삭 결과</Header>
+        <Header>
+          인하대학교님의 삼성전자 DX개발 직무 자기소개서 AI 첨삭 결과
+        </Header>
         <ResultWrapper>
           <LineWrapper>
             <EachResult>
               <EachHeader>장점</EachHeader>
+              <EachContents>
+                ✅ 합격자의 68%는 학부연구생 경험이 있어요. <br /> ✅ 합격자의
+                94%는 프로젝트 경험이 있어요. <br /> ✅ 합격자의 84%는 수상
+                경험이 있어요.
+              </EachContents>
             </EachResult>
             <EachResult>
               <EachHeader>개선점</EachHeader>
+              <EachContents>
+                ❗ 합격자의 64%는 팀장 경험이 있어요.
+                <br /> ❗ 합격자의 55%는 동아리 관련 내용이 있어요. <br /> ❗
+                합격자의 78%는 인턴 경험이 있어요.
+              </EachContents>
             </EachResult>
           </LineWrapper>
           <LineWrapper>
             <EachResult>
               <EachHeader>예상 질문</EachHeader>
+              <EachContents>
+                🎯 사람을 향하는 서비스가 삼성에서만 가능한 이유는? <br /> 🎯
+                서버 아키텍처 설계과정에서 어떤 기술적인 고려사항이 있었고, 어떤
+                점을 중점적으로 설계하셨나요?
+              </EachContents>
             </EachResult>
             <EachResult>
               <EachHeader>질문이 비슷한 기업</EachHeader>
+              <ImageWrapper>
+                <Img src="image/question-nc.jpg" alt="nc" />
+                <Img src="image/question-hyundai.jpg" alt="sk" />
+              </ImageWrapper>
             </EachResult>
           </LineWrapper>
           <BtnWrapper>
