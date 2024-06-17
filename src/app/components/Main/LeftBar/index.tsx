@@ -42,6 +42,9 @@ import {
   IcoWrapper,
   NoneText,
   QuestionInput,
+  DimOverlay,
+  LoadingGif,
+  LoadingText,
 } from "./style";
 import { Question, Company } from "../type";
 
@@ -76,6 +79,7 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
   >(null);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [newQuestionText, setNewQuestionText] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -187,8 +191,57 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
     setIsLoggedIn(false);
   };
 
+  const handleCheckMyReport = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      window.location.href = "../../../edit"; // edit 페이지로 이동
+    }, 8000);
+  };
+
   return (
     <>
+      {isLoading && (
+        <DimOverlay>
+          <LoadingGif src="image/loading.gif" alt="Loading..." />
+          <LoadingText>
+            <span style={{ color: "var(--Primary-40, #008dcf)" }}>
+              {Array.from("인하대학교").map((char, idx) => (
+                <span key={idx} className="animated-text">
+                  {char}
+                </span>
+              ))}
+            </span>
+            {Array.from("님의").map((char, idx) => (
+              <span key={idx} className="animated-text">
+                {char}
+              </span>
+            ))}{" "}
+            <span style={{ color: "#1428A0" }}>
+              {Array.from("삼성전자").map((char, idx) => (
+                <span key={idx} className="animated-text">
+                  {char}
+                </span>
+              ))}
+            </span>{" "}
+            {Array.from("자기소개서를").map((char, idx) => (
+              <span key={idx} className="animated-text">
+                {char}
+              </span>
+            ))}{" "}
+            {Array.from("AI가").map((char, idx) => (
+              <span key={idx} className="animated-text">
+                {char}
+              </span>
+            ))}{" "}
+            {Array.from("분석중입니다...").map((char, idx) => (
+              <span key={idx} className="animated-text">
+                {char}
+              </span>
+            ))}
+          </LoadingText>
+        </DimOverlay>
+      )}
       <LeftBar>
         {isLoggedIn ? (
           <>
@@ -464,10 +517,8 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
                   </Ico>
                   <AddText>질문 추가하기</AddText>
                 </AddQuestion>
-                <CheckMyReport>
-                  <Link href={"../../../edit"}>
-                    <Text>첨삭</Text>
-                  </Link>
+                <CheckMyReport onClick={handleCheckMyReport}>
+                  <Text>첨삭</Text>
                 </CheckMyReport>
               </CompanyList>
             ))

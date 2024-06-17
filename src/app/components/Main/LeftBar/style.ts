@@ -407,3 +407,43 @@ export const QuestionInput = styled.input`
   font-size: 15px;
   font-style: normal;
 `;
+
+export const DimOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+`;
+
+export const LoadingGif = styled.img`
+  width: 30%;
+  height: 30%;
+`;
+
+export const LoadingText = styled.div`
+  font-feature-settings: "ss10" on;
+  font-weight: 600;
+  font-size: 24px;
+  font-style: normal;
+
+  .animated-text {
+    display: inline-block;
+    animation: upDown 0.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes upDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-10px);
+    }
+  }
+`;

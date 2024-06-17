@@ -125,6 +125,6 @@ export const BtnWrapper = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 200px;
+  width: 220px;
   height: 80px;
 `;

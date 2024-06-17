@@ -59,7 +59,6 @@ export const Edit: React.FC = () => {
           </LineWrapper>
           <BtnWrapper>
             <Link href={"./main"}>메인 페이지로 이동</Link>
-
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="49"
