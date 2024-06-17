@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useRef } from "react";
+import Link from "next/link";
 import {
   Cover,
   Header,
@@ -57,7 +58,8 @@ export const Edit: React.FC = () => {
             </EachResult>
           </LineWrapper>
           <BtnWrapper>
-            메인 페이지로 이동
+            <Link href={"./main"}>메인 페이지로 이동</Link>
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="49"

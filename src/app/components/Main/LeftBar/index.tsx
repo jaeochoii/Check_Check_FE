@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import PopUpPage from "@/app/popUp/page";
 import { SetProfile } from "@/app/utils/Profile";
@@ -60,7 +60,13 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
 }) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [companies, setCompanies] = useState<Company[]>([]);
+  const [companies, setCompanies] = useState<Company[]>(() => {
+    if (typeof window !== "undefined") {
+      const savedCompanies = localStorage.getItem("companies");
+      return savedCompanies ? JSON.parse(savedCompanies) : [];
+    }
+    return [];
+  });
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
   const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(
     null
@@ -70,6 +76,12 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
   >(null);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [newQuestionText, setNewQuestionText] = useState<string>("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("companies", JSON.stringify(companies));
+    }
+  }, [companies]);
 
   const TextOverflow: React.FC<Props> = ({ text }) => {
     const maxLength: number = 8;
