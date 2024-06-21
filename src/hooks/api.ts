@@ -1,57 +1,67 @@
 import axios from "axios";
 
-const API_URL = "";
+const API_BASE_URL = "http://54.254.183.233:8080";
 
-interface RegisterData {
+interface LoginCredentials {
+  username: string;
+  password: string;
+}
+
+interface SignupData {
   username: string;
   password: string;
   nickname: string;
 }
 
-interface LoginData {
-  username: string;
-  password: string;
-}
-
-interface JwtResponse {
-  token: string;
-}
-
-export const register = async (data: RegisterData): Promise<string> => {
+export const login = async (credentials: LoginCredentials): Promise<any> => {
   try {
-    const response = await axios.post(`${API_URL}/register`, data);
-    return response.data;
-  } catch (error: any) {
-    throw new Error(error.response?.data.message || error.message);
-  }
-};
-
-export const login = async (data: LoginData): Promise<JwtResponse> => {
-  try {
-    const response = await axios.post(`${API_URL}/login`, data);
-    const token = response.data.token;
-    localStorage.setItem("token", token);
-    return response.data;
-  } catch (error: any) {
-    throw new Error(error.response?.data.message || error.message);
-  }
-};
-
-const api = axios.create({
-  baseURL: API_URL,
-});
-
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    const response = await axios.post(`${API_BASE_URL}/login`, credentials, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.data.refreshToken && response.data.accessToken) {
+      localStorage.setItem("refreshToken", response.data.refreshToken);
+      localStorage.setItem("accessToken", response.data.accessToken);
     }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
+    return response.data;
+  } catch (error) {
+    throw error;
   }
-);
+};
 
-export default api;
+export const signup = async (
+  data: SignupData,
+  accessToken: string
+): Promise<any> => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/join`, data, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getAccessToken = async (refreshToken: string): Promise<string> => {
+  try {
+    const response = await axios.post(
+      `${API_BASE_URL}/accesstoken`,
+      {},
+      {
+        headers: {
+          "Refresh-Token": refreshToken,
+        },
+      }
+    );
+    const newAccessToken = response.data.accessToken;
+    localStorage.setItem("accessToken", newAccessToken);
+    return newAccessToken;
+  } catch (error) {
+    throw error;
+  }
+};

@@ -54,6 +54,8 @@ export const Login: React.FC = () => {
     try {
       const response = await login({ username: inputID, password: inputPW });
       console.log("Login successful:", response);
+      // 로그인 성공 후 메인 페이지로 이동
+      window.location.href = "/main";
     } catch (error) {
       if (error instanceof Error) {
         console.error("Error logging in:", error.message);

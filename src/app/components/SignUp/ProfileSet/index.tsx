@@ -1,8 +1,9 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { register } from "@/hooks/api";
+import { getAccessToken, signup } from "@/hooks/api";
 import { Images } from "../../../../styles";
+import axios from "axios";
 import {
   Layout,
   Header,
@@ -150,17 +151,32 @@ export const ProfileSetPage: React.FC<props> = ({ onNext }) => {
     }
 
     try {
-      await register({
-        username: inputID,
-        password: inputPW,
-        nickname: inputName,
-      });
-      onNext(inputName);
-    } catch (error) {
-      if (error instanceof Error) {
-        console.error("Error registering user:", error.message);
+      const refreshToken = localStorage.getItem("refreshToken");
+      if (!refreshToken) {
+        throw new Error("No refresh token found");
+      }
+
+      const accessToken = await getAccessToken(refreshToken);
+
+      const response = await signup(
+        {
+          username: inputID,
+          password: inputPW,
+          nickname: inputName,
+        },
+        accessToken
+      );
+
+      if (response) {
+        onNext(inputName);
       } else {
-        console.error("An unexpected error occurred");
+        console.error("Registration failed:", response);
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error("Error registering user:", error.message, error.response);
+      } else {
+        console.error("An unexpected error occurred:", error);
       }
     }
 

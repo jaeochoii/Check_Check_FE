@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import PopUpPage from "@/app/popUp/page";
 import { SetProfile } from "@/app/utils/Profile";
-import { useRef } from "react";
 import {
   CompanyHeader,
   CompanyList,
@@ -135,7 +134,7 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
       });
     });
 
-    setNewQuestionText(""); // 질문 추가 후 입력 필드를 초기화
+    setNewQuestionText("");
   };
 
   const handleDeleteQuestion = (companyId: number, indexToDelete: number) => {
@@ -195,7 +194,7 @@ export const LeftBarPage: React.FC<LeftBarPageProps> = ({
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      window.location.href = "../../../edit"; // edit 페이지로 이동
+      window.location.href = "../../../edit";
     }, 8000);
   };
 
